@@ -1,0 +1,37 @@
+{
+ "cards": [
+  {
+   "hidden": 0,
+   "label": "Manage Product",
+   "links": "[\n    {\n        \"description\": \"Create Product.\",\n        \"label\": \"Product\",\n        \"name\": \"Product\",\n        \"type\": \"doctype\"\n    }\n]"
+  }
+ ],
+ "cards_label": "Product",
+ "category": "Modules",
+ "charts": [],
+ "creation": "2020-08-06 14:09:44.531926",
+ "developer_mode_only": 0,
+ "disable_user_customization": 0,
+ "docstatus": 0,
+ "doctype": "Desk Page",
+ "extends_another_page": 0,
+ "hide_custom": 0,
+ "idx": 0,
+ "is_standard": 1,
+ "label": "Product",
+ "modified": "2020-08-06 16:10:16.352095",
+ "modified_by": "Administrator",
+ "module": "Accounts",
+ "name": "Product",
+ "owner": "Administrator",
+ "pin_to_bottom": 0,
+ "pin_to_top": 0,
+ "shortcuts": [
+  {
+   "label": "Manage Product",
+   "link_to": "Product",
+   "type": "DocType"
+  }
+ ],
+ "shortcuts_label": "Product"
+}
