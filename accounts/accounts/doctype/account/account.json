@@ -1,0 +1,79 @@
+{
+ "actions": [],
+ "creation": "2020-08-12 12:13:25.898614",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "account_name",
+  "company_name",
+  "parent_account",
+  "is_group",
+  "account_number",
+  "root_type"
+ ],
+ "fields": [
+  {
+   "fieldname": "account_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Account Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company Name",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "parent_account",
+   "fieldtype": "Link",
+   "label": "Parent Account",
+   "options": "Account"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Is Group"
+  },
+  {
+   "fieldname": "account_number",
+   "fieldtype": "Data",
+   "label": "Account Number"
+  },
+  {
+   "fieldname": "root_type",
+   "fieldtype": "Select",
+   "label": "Root Type",
+   "options": "\nAsset\nLiability\nIncome\nExpense"
+  }
+ ],
+ "links": [],
+ "modified": "2020-08-12 17:16:03.666723",
+ "modified_by": "Administrator",
+ "module": "Accounts",
+ "name": "Account",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
