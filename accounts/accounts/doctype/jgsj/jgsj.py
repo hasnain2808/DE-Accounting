@@ -6,8 +6,5 @@ from __future__ import unicode_literals
 # import frappe
 from frappe.utils.nestedset import NestedSet
 
-class Account(NestedSet):
-	def autoname(self):
-		print(self.company_name + self.account_name)
-		self.name = self.account_name + " - " + self.company_name
-
+class jgsj(NestedSet):
+	pass

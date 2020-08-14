@@ -1,53 +1,22 @@
 {
  "actions": [],
- "creation": "2020-08-14 12:42:55.028295",
+ "creation": "2020-08-14 11:47:18.738953",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "account_name",
-  "company_name",
-  "is_group",
-  "account_number",
-  "root_type",
+  "dkfjsd",
   "lft",
   "rgt",
   "is_group",
   "old_parent",
-  "parent_account"
+  "parent_jgsj"
  ],
  "fields": [
   {
-   "fieldname": "account_name",
+   "fieldname": "dkfjsd",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Account Name",
-   "reqd": 1
-  },
-  {
-   "fieldname": "company_name",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Company Name",
-   "options": "Company",
-   "reqd": 1
-  },
-  {
-   "default": "0",
-   "fieldname": "is_group",
-   "fieldtype": "Check",
-   "label": "Is Group"
-  },
-  {
-   "fieldname": "account_number",
-   "fieldtype": "Data",
-   "label": "Account Number"
-  },
-  {
-   "fieldname": "root_type",
-   "fieldtype": "Select",
-   "label": "Root Type",
-   "options": "\nAssets\nLiabilities\nIncome\nExpense"
+   "label": "sfkjs skefskj"
   },
   {
    "fieldname": "lft",
@@ -66,6 +35,7 @@
    "read_only": 1
   },
   {
+   "default": "0",
    "fieldname": "is_group",
    "fieldtype": "Check",
    "label": "Is Group"
@@ -74,22 +44,22 @@
    "fieldname": "old_parent",
    "fieldtype": "Link",
    "label": "Old Parent",
-   "options": "Account"
+   "options": "jgsj"
   },
   {
-   "fieldname": "parent_account",
+   "fieldname": "parent_jgsj",
    "fieldtype": "Link",
-   "label": "Parent Account",
-   "options": "Account"
+   "label": "Parent jgsj",
+   "options": "jgsj"
   }
  ],
  "is_tree": 1,
  "links": [],
- "modified": "2020-08-14 12:42:55.028295",
+ "modified": "2020-08-14 12:00:40.045203",
  "modified_by": "Administrator",
  "module": "Accounts",
- "name": "Account",
- "nsm_parent_field": "parent_account",
+ "name": "jgsj",
+ "nsm_parent_field": "parent_jgsj",
  "owner": "Administrator",
  "permissions": [
   {
@@ -103,8 +73,21 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
   }
  ],
+ "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1

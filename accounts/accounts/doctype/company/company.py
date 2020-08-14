@@ -56,8 +56,6 @@ Accounts = {
 	]
 }
 
-
-
 class Company(Document):
 	def create_accounts(self, child, parent, company, root_type):
 		if type(child) == type('string'):

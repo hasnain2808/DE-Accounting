@@ -1,20 +1,20 @@
 {
  "actions": [],
- "autoname": "field:company_name",
- "creation": "2020-08-14 12:43:54.416244",
+ "autoname": "field:customer_name",
+ "creation": "2020-08-14 17:02:55.823226",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "company_name",
+  "customer_name",
   "country"
  ],
  "fields": [
   {
-   "fieldname": "company_name",
+   "fieldname": "customer_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Company Name",
+   "label": "Customer Name",
    "reqd": 1,
    "unique": 1
   },
@@ -28,10 +28,10 @@
   }
  ],
  "links": [],
- "modified": "2020-08-14 12:43:54.416244",
+ "modified": "2020-08-14 17:02:55.823226",
  "modified_by": "Administrator",
  "module": "Accounts",
- "name": "Company",
+ "name": "Customer",
  "owner": "Administrator",
  "permissions": [
   {
@@ -43,6 +43,18 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
    "share": 1,
    "write": 1
   }
