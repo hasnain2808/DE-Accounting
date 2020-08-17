@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "autoname": "JE.#####",
  "creation": "2020-08-14 16:39:19.231021",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -46,7 +47,7 @@
   }
  ],
  "links": [],
- "modified": "2020-08-16 11:39:48.183636",
+ "modified": "2020-08-17 10:26:09.056330",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Journal Entry",

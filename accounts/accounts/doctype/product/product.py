@@ -7,4 +7,6 @@ from __future__ import unicode_literals
 from frappe.model.document import Document
 
 class Product(Document):
-	pass
+	def autoname(self):
+		print(self.product_code + self.product_name)
+		self.name = self.product_code + " - " + self.product_name

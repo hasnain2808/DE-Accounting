@@ -1,13 +1,14 @@
 {
  "actions": [],
- "autoname": "field:product_name",
  "creation": "2020-08-06 14:02:18.971249",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "product_code",
   "product_name",
-  "price"
+  "buying_price",
+  "selling_price"
  ],
  "fields": [
   {
@@ -19,15 +20,27 @@
    "unique": 1
   },
   {
-   "fieldname": "price",
+   "fieldname": "buying_price",
    "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "Price",
+   "label": "Buying Price",
+   "reqd": 1
+  },
+  {
+   "fieldname": "selling_price",
+   "fieldtype": "Currency",
+   "label": "Selling Price",
+   "reqd": 1
+  },
+  {
+   "fieldname": "product_code",
+   "fieldtype": "Data",
+   "label": "Product Code",
    "reqd": 1
   }
  ],
  "links": [],
- "modified": "2020-08-06 15:51:59.106969",
+ "modified": "2020-08-17 11:41:29.012384",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Product",

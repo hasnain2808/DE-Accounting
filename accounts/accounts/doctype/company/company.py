@@ -70,7 +70,8 @@ class Company(Document):
 			account.insert()
 		if type(child) == type({}):
 			for key, value in child.items():
-
+				if key in Accounts.keys():
+					root_type = key
 				account = frappe.get_doc({
 							"doctype": "Account",
 							"account_name": key,
@@ -82,12 +83,21 @@ class Company(Document):
 				account.insert()
 
 				for account_child in value:
-					self.create_accounts(account_child, account.name, company, None)
+					self.create_accounts(account_child, account.name, company, root_type)
 
 
 
 
 	def on_update(self):
 		print(Accounts)
-		print('-'*255)
+		# print('-'*255)
+		# account = frappe.get_doc({
+		# 	"doctype": "Account",
+		# 	"account_name": "Root",
+		# 	"company_name": self.name,
+		# 	"parent_account": None,
+		# 	"is_group": 1,
+		# 	"root_type": None,
+		# })
+		# account.insert()
 		self.create_accounts(Accounts, None, self.name, None)

@@ -1,52 +1,44 @@
 {
  "actions": [],
- "autoname": "field:party_name",
- "creation": "2020-08-06 15:57:20.458573",
+ "creation": "2020-08-17 12:19:02.788976",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "party_name",
-  "address",
-  "country",
-  "point_of_contact"
+  "product",
+  "buying_price",
+  "quantity"
  ],
  "fields": [
   {
-   "fieldname": "party_name",
-   "fieldtype": "Data",
+   "fieldname": "product",
+   "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Party Name",
-   "reqd": 1,
-   "unique": 1
-  },
-  {
-   "fieldname": "address",
-   "fieldtype": "Text",
-   "in_list_view": 1,
-   "label": "Address",
+   "label": "Product",
+   "options": "Product",
    "reqd": 1
   },
   {
-   "fieldname": "country",
-   "fieldtype": "Data",
+   "fieldname": "buying_price",
+   "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "Country",
+   "label": "Buying Price",
+   "options": "product.buying_price",
    "reqd": 1
   },
   {
-   "fieldname": "point_of_contact",
-   "fieldtype": "Data",
+   "fieldname": "quantity",
+   "fieldtype": "Int",
    "in_list_view": 1,
-   "label": "Point of Contact",
+   "label": "Quantity",
    "reqd": 1
   }
  ],
  "links": [],
- "modified": "2020-08-06 15:57:20.458573",
+ "modified": "2020-08-17 12:19:02.788976",
  "modified_by": "Administrator",
  "module": "Accounts",
- "name": "Party",
+ "name": "Purchase Order Item",
  "owner": "Administrator",
  "permissions": [
   {
