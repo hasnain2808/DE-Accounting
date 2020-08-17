@@ -1,0 +1,79 @@
+{
+ "actions": [],
+ "autoname": "PUR-ORD-.#####",
+ "creation": "2020-08-17 16:46:21.436143",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "supplier",
+  "company",
+  "column_break_3",
+  "required_by",
+  "section_break_5",
+  "product_list"
+ ],
+ "fields": [
+  {
+   "fieldname": "product_list",
+   "fieldtype": "Table",
+   "label": "Product List",
+   "options": "Purchase Order Item"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Supplier",
+   "options": "Supplier",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "required_by",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Required By",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_5",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "links": [],
+ "modified": "2020-08-17 17:17:31.914566",
+ "modified_by": "Administrator",
+ "module": "Purchase",
+ "name": "Purchase Order",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

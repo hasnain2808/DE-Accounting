@@ -1,1 +1,4 @@
 Accounts
+Sale_
+Sales
+Purchase
