@@ -1,7 +1,7 @@
 {
  "actions": [],
- "autoname": "PUR-ORD-.#####",
- "creation": "2020-08-17 16:46:21.436143",
+ "autoname": "PUR-INV-.#####",
+ "creation": "2020-08-19 12:36:11.632065",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -9,18 +9,12 @@
   "supplier",
   "company",
   "column_break_3",
-  "required_by",
+  "posting_date",
   "section_break_5",
   "product_list",
   "total_amount"
  ],
  "fields": [
-  {
-   "fieldname": "product_list",
-   "fieldtype": "Table",
-   "label": "Product List",
-   "options": "Purchase Order Item"
-  },
   {
    "fieldname": "supplier",
    "fieldtype": "Link",
@@ -38,19 +32,25 @@
    "reqd": 1
   },
   {
-   "fieldname": "required_by",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Required By",
-   "reqd": 1
-  },
-  {
    "fieldname": "column_break_3",
    "fieldtype": "Column Break"
   },
   {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
    "fieldname": "section_break_5",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "product_list",
+   "fieldtype": "Table",
+   "label": "Product List",
+   "options": "Purchase Invoice Item"
   },
   {
    "fieldname": "total_amount",
@@ -59,10 +59,10 @@
   }
  ],
  "links": [],
- "modified": "2020-08-18 21:35:16.155873",
+ "modified": "2020-08-19 12:37:35.691561",
  "modified_by": "Administrator",
  "module": "Purchase",
- "name": "Purchase Order",
+ "name": "Purchase Invoice",
  "owner": "Administrator",
  "permissions": [
   {
