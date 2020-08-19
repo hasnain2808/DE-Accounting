@@ -5,4 +5,7 @@ frappe.ui.form.on('Sales Order', {
 	// refresh: function(frm) {
 
 	// }
+	refresh: function(frm) {
+		console.log("inside refresh event");
+	}
 });

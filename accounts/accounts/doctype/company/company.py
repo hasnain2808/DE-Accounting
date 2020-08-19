@@ -71,15 +71,4 @@ class Company(Document):
                     )
 
     def on_update(self):
-        print(Accounts)
-        # print('-'*255)
-        # account = frappe.get_doc({
-        # 	"doctype": "Account",
-        # 	"account_name": "Root",
-        # 	"company_name": self.name,
-        # 	"parent_account": None,
-        # 	"is_group": 1,
-        # 	"root_type": None,
-        # })
-        # account.insert()
         self.create_accounts(Accounts, None, self.name, None)
