@@ -13,17 +13,22 @@ frappe.ui.form.on("Purchase Order", {
 	},
 	refresh: function(frm) {
 		console.log("inside refresh event");
-		frm.add_custom_button(__("Generate Purchase Receipt"), function() {
-				frappe.route_options = {
-					supplier: frm.doc.supplier,
-					company: frm.doc.company,
-					product_list: frm.doc.product_list,
-					total_amount: frm.doc.total_amount
-				},
-				console.log(frappe.route_options)
-				frappe.set_route("Form", "Purchase Receipt", "New Purchase Receipt", );
-			});
-
+		// frm.add_custom_button(__("Generate Purchase Receipt"), function() {
+		// 		frappe.route_options = {
+		// 			supplier: frm.doc.supplier,
+		// 			company: frm.doc.company,
+		// 			product_list: frm.doc.product_list,
+		// 			total_amount: frm.doc.total_amount
+		// 		},
+		// 		console.log(frappe.route_options)
+		// 		frappe.set_route("Form", "Purchase Receipt", "New Purchase Receipt", );
+		// 	});
+		cur_frm.add_custom_button(__('Purchase Receipt'),function() {
+			frappe.model.open_mapped_doc({
+				method: "accounts.purchase.doctype.purchase_order.purchase_order.make_purchase_receipt",
+				frm: cur_frm
+			})
+		})
 	},
 })
 

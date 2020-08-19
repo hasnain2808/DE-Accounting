@@ -5,6 +5,7 @@
 from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
+from frappe.model.mapper import get_mapped_doc
 
 class PurchaseReceipt(Document):
 	def on_update(self):
@@ -44,3 +45,34 @@ class PurchaseReceipt(Document):
 		JE.insert()
 
 
+def set_missing_values(source, target):
+	target.run_method("set_missing_values")
+	# target.run_method("calculate_taxes_and_totals")
+
+
+@frappe.whitelist()
+def make_purchase_invoice(source_name, target_doc=None):
+	doc = get_mapped_doc("Purchase Receipt", source_name,	{
+		"Purchase Receipt": {
+			"doctype": "Purchase Invoice",
+			"field_map": {
+			},
+			"validation": {
+			}
+		},
+		"Purchase Receipt Items": {
+			"doctype": "Purchase Invoice Item",
+			"field_map": {
+				"name": "purchase_invoice_item",
+				"parent": "purchase_invoice",
+				# "bom": "bom",
+				# "material_request": "material_request",
+				# "material_request_item": "material_request_item"
+			},
+		},
+		# "Purchase Taxes and Charges": {
+		# 	"doctype": "Purchase Taxes and Charges",
+		# 	"add_if_empty": True
+		# }
+	}, target_doc, set_missing_values)
+	return doc

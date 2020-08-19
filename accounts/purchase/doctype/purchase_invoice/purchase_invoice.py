@@ -5,6 +5,7 @@
 from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
+from frappe.model.mapper import get_mapped_doc
 
 class PurchaseInvoice(Document):
 	def on_update(self):
@@ -39,3 +40,7 @@ class PurchaseInvoice(Document):
 		    }
 		)
 		JE.insert()
+
+def set_missing_values(source, target):
+	target.run_method("set_missing_values")
+	# target.run_method("calculate_taxes_and_totals")
