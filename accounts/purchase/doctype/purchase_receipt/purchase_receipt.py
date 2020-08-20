@@ -41,9 +41,7 @@ class PurchaseReceipt(Document):
                 "doctype": "Journal Entry",
                 "company": self.company,
                 "entry_date": self.posting_date,
-                "entry_lines": [JEl1, JEl2]
-                # "reference_number": ,
-                # "reference_date": ,
+                "entry_lines": [JEl1, JEl2],
             }
         )
         JE.insert()
@@ -51,7 +49,6 @@ class PurchaseReceipt(Document):
 
 def set_missing_values(source, target):
     target.run_method("set_missing_values")
-    # target.run_method("calculate_taxes_and_totals")
 
 
 @frappe.whitelist()
@@ -70,17 +67,11 @@ def make_purchase_invoice(source_name, target_doc=None):
                 "field_map": {
                     "name": "purchase_invoice_item",
                     "parent": "purchase_invoice",
-                    # "bom": "bom",
-                    # "material_request": "material_request",
-                    # "material_request_item": "material_request_item"
                 },
             },
-            # "Purchase Taxes and Charges": {
-            # 	"doctype": "Purchase Taxes and Charges",
-            # 	"add_if_empty": True
-            # }
         },
         target_doc,
         set_missing_values,
     )
     return doc
+
