@@ -1,22 +1,18 @@
 // Copyright (c) 2020, Moha and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on('Sales Order', {
+frappe.ui.form.on('Delivery Note', {
 	refresh: function(frm) {
 		console.log("inside refresh event");
-		cur_frm.add_custom_button(__('Delivery Note'),function() {
+		cur_frm.add_custom_button(__('Invoice'),function() {
 			frappe.model.open_mapped_doc({
-				method: "accounts.sales.doctype.sales_order.sales_order.make_delivery_note",
+				method: "accounts.sales.doctype.delivery_note.delivery_note.make_sales_invoice",
 				frm: cur_frm
 			})
 		})
 	}
 });
-
-
-
-
-frappe.ui.form.on("Sales Order Item", {
+frappe.ui.form.on("Delivery Note Item", {
 	qty : function(frm, cdt, cdn) {
 		var cur_doc = locals[cdt][cdn];
 		cur_doc.amount = cur_doc.qty * cur_doc.selling_price;

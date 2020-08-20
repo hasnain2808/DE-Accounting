@@ -1,7 +1,7 @@
 {
  "actions": [],
- "autoname": "SAL-ORD-.#####",
- "creation": "2020-08-19 14:32:45.761754",
+ "autoname": "DEL-NOT-.#####",
+ "creation": "2020-08-19 14:53:58.931595",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -9,23 +9,17 @@
   "customer",
   "company",
   "column_break_3",
-  "required_by",
+  "posting_date",
   "section_break_5",
   "product_list",
   "total_amount"
  ],
  "fields": [
   {
-   "fieldname": "product_list",
-   "fieldtype": "Table",
-   "label": "Product List",
-   "options": "Sales Order Item"
-  },
-  {
    "fieldname": "customer",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Customer",
+   "label": "Supplier",
    "options": "Customer",
    "reqd": 1
   },
@@ -42,15 +36,21 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "required_by",
+   "fieldname": "posting_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Required By",
+   "label": "Posting Date",
    "reqd": 1
   },
   {
    "fieldname": "section_break_5",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "product_list",
+   "fieldtype": "Table",
+   "label": "Product List",
+   "options": "Delivery Note Item"
   },
   {
    "fieldname": "total_amount",
@@ -59,10 +59,10 @@
   }
  ],
  "links": [],
- "modified": "2020-08-19 18:02:24.859601",
+ "modified": "2020-08-19 14:53:58.931595",
  "modified_by": "Administrator",
  "module": "Sales",
- "name": "Sales Order",
+ "name": "Delivery Note",
  "owner": "Administrator",
  "permissions": [
   {
