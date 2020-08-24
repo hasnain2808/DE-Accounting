@@ -12,7 +12,8 @@
   "posting_date",
   "section_break_5",
   "product_list",
-  "total_amount"
+  "total_amount",
+  "amended_from"
  ],
  "fields": [
   {
@@ -56,10 +57,20 @@
    "in_list_view": 1,
    "label": "Posting Date",
    "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Purchase Receipt",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
+ "is_submittable": 1,
  "links": [],
- "modified": "2020-08-19 11:23:38.762242",
+ "modified": "2020-08-21 16:38:46.075205",
  "modified_by": "Administrator",
  "module": "Purchase",
  "name": "Purchase Receipt",

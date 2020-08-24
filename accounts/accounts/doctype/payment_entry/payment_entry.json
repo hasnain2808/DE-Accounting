@@ -18,7 +18,8 @@
   "accounts_section",
   "debit_account",
   "column_break_13",
-  "credit_account"
+  "credit_account",
+  "amended_from"
  ],
  "fields": [
   {
@@ -94,10 +95,20 @@
   {
    "fieldname": "column_break_13",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Payment Entry",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
+ "is_submittable": 1,
  "links": [],
- "modified": "2020-08-20 14:26:56.014061",
+ "modified": "2020-08-21 16:39:33.996063",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Payment Entry",
