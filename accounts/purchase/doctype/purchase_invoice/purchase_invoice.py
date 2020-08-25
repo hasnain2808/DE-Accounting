@@ -11,7 +11,7 @@ from frappe import _, scrub
 
 
 class PurchaseInvoice(Document):
-    def on_update(self):
+    def on_submit(self):
         creditors_account = frappe.get_list(
             "Account",
             filters={"company_name": self.company, "account_name": "Creditors"},
@@ -25,27 +25,64 @@ class PurchaseInvoice(Document):
             },
         )
         print(rec_not_billed)
-        JEl1 = {
-            "credit": self.total_amount,
-            "debit": 0,
-            "account": creditors_account[0].name,
-            "party_type": "Supplier",
-            "party_name": self.supplier,
-        }
-        JEl2 = {
-            "credit": 0,
-            "debit": self.total_amount,
-            "account": rec_not_billed[0].name,
-        }
-        JE = frappe.get_doc(
+        # JEl1 = {
+        #     "credit": self.total_amount,
+        #     "debit": 0,
+        #     "account": creditors_account[0].name,
+        #     "party_type": "Supplier",
+        #     "party_name": self.supplier,
+        # }
+        # JEl2 = {
+        #     "credit": 0,
+        #     "debit": self.total_amount,
+        #     "account": rec_not_billed[0].name,
+        # }
+        # JE = frappe.get_doc(
+        #     {
+        #         "doctype": "Journal Entry",
+        #         "company": self.company,
+        #         "entry_date": self.posting_date,
+        #         "entry_lines": [JEl1, JEl2]
+        #     }
+        # )
+        # JE.insert()
+		# for entry_line in self.entry_lines:
+        gl_entry = frappe.get_doc(
             {
-                "doctype": "Journal Entry",
+                "doctype": "GL Entry",
+                "posting_date": self.posting_date,
+                "transaction_date": self.posting_date,
+                "account": rec_not_billed[0].name,
+                "party_type": "Supplier",
+                "party": self.supplier,
+                "debit": self.total_amount,
+                "credit": 0,
+                "against": creditors_account[0].name,
+                "against_voucher": "Purchase Invoice",
+                "voucher_number": self.name,
                 "company": self.company,
-                "entry_date": self.posting_date,
-                "entry_lines": [JEl1, JEl2]
+                "fiscal_year": "2020-2021"
             }
         )
-        JE.insert()
+        gl_entry.insert()
+        gl_entry = frappe.get_doc(
+            {
+                "doctype": "GL Entry",
+                "posting_date": self.posting_date,
+                "transaction_date": self.posting_date,
+                "account": creditors_account[0].name,
+                "party_type": "Supplier",
+                "party": self.supplier,
+                "debit": 0,
+                "credit": self.total_amount,
+                "against": rec_not_billed[0].name,
+                "against_voucher": "Purchase Invoice",
+                "voucher_number": self.name,
+                "company": self.company,
+                "fiscal_year": "2020-2021"
+            }
+        )
+        gl_entry.insert()
 
 
 def set_missing_values(source, target):
