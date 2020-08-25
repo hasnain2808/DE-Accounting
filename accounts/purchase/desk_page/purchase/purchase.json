@@ -1,0 +1,35 @@
+{
+ "cards": [
+  {
+   "hidden": 0,
+   "label": "Purchase Cycle",
+   "links": "[\n    {\n        \"description\": \"Order Products\",\n        \"label\": \"Purchase Order\",\n        \"name\": \"Purchase Order\",\n        \"type\": \"doctype\"\n    },\n {\n        \"description\": \"Product Receipt.\",\n        \"label\": \"Purchase Receipt\",\n        \"name\": \"Purchase Receipt\",\n        \"onboard\": 1,\n        \"type\": \"doctype\"\n    },\n    {\n        \"description\": \"Bills by Suppliers.\",\n        \"label\": \"Purchase Invoice\",\n        \"name\": \"Purchase Invoice\",\n        \"onboard\": 1,\n        \"type\": \"doctype\"\n    },\n    {\n        \"description\": \"Bank/Cash transactions against party or for internal transfer\",\n        \"label\": \"Payment Entry\",\n        \"name\": \"Payment Entry\",\n        \"type\": \"doctype\"\n    }\n\n]"
+  }
+ ],
+ "category": "Modules",
+ "charts": [],
+ "creation": "2020-08-18 15:19:14.360907",
+ "developer_mode_only": 0,
+ "disable_user_customization": 0,
+ "docstatus": 0,
+ "doctype": "Desk Page",
+ "extends_another_page": 0,
+ "hide_custom": 0,
+ "idx": 0,
+ "is_standard": 1,
+ "label": "Purchase",
+ "modified": "2020-08-25 19:33:24.677467",
+ "modified_by": "Administrator",
+ "module": "Purchase",
+ "name": "Purchase",
+ "owner": "Administrator",
+ "pin_to_bottom": 0,
+ "pin_to_top": 0,
+ "shortcuts": [
+  {
+   "label": "Purhase Order",
+   "link_to": "Purchase Order",
+   "type": "DocType"
+  }
+ ]
+}
