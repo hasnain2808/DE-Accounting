@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "autoname": "ACC-GL-.####",
  "creation": "2020-08-24 11:48:01.816981",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -16,7 +17,8 @@
   "against_voucher",
   "voucher_number",
   "company",
-  "fiscal_year"
+  "fiscal_year",
+  "amended_from"
  ],
  "fields": [
   {
@@ -79,17 +81,27 @@
    "fieldname": "company",
    "fieldtype": "Link",
    "label": "Company",
-   "options": "DocType"
+   "options": "Company"
   },
   {
    "fieldname": "fiscal_year",
    "fieldtype": "Link",
    "label": "Fiscal Year",
    "options": "Fiscal Year"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "GL Entry",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
+ "is_submittable": 1,
  "links": [],
- "modified": "2020-08-24 13:24:01.256503",
+ "modified": "2020-08-25 11:32:24.603385",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "GL Entry",

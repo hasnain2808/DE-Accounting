@@ -9,7 +9,7 @@ from frappe.model.mapper import get_mapped_doc
 
 
 class PurchaseReceipt(Document):
-    def on_update(self):
+    def on_submit(self):
         stock_account = frappe.get_list(
             "Account",
             filters={"company_name": self.company, "account_name": "Stock in Hand"},
@@ -22,29 +22,66 @@ class PurchaseReceipt(Document):
                 "account_name": "Asset Received But not Billed",
             },
         )
-        print(rec_not_billed)
+        # print(rec_not_billed)
 
-        JEl1 = {
-            "credit": 0,
-            "debit": self.total_amount,
-            "account": stock_account[0].name,
-        }
-        JEl2 = {
-            "debit": 0,
-            "credit": self.total_amount,
-            "account": rec_not_billed[0].name,
-            "party_type": "Supplier",
-            "party_name": self.supplier,
-        }
-        JE = frappe.get_doc(
+        # JEl1 = {
+        #     "credit": 0,
+        #     "debit": self.total_amount,
+        #     "account": stock_account[0].name,
+        # }
+        # JEl2 = {
+        #     "debit": 0,
+        #     "credit": self.total_amount,
+        #     "account": rec_not_billed[0].name,
+        #     "party_type": "Supplier",
+        #     "party_name": self.supplier,
+        # }
+        # JE = frappe.get_doc(
+        #     {
+        #         "doctype": "Journal Entry",
+        #         "company": self.company,
+        #         "entry_date": self.posting_date,
+        #         "entry_lines": [JEl1, JEl2],
+        #     }
+        # )
+        # JE.insert()
+
+        gl_entry = frappe.get_doc(
             {
-                "doctype": "Journal Entry",
+                "doctype": "GL Entry",
+                "posting_date": self.posting_date,
+                "transaction_date": self.posting_date,
+                "account": stock_account[0].name,
+                "party_type": "Supplier",
+                "party": self.supplier,
+                "debit": self.total_amount,
+                "credit": 0,
+                "against": rec_not_billed[0].name,
+                "against_voucher": "Purchase Receipt",
+                "voucher_number": self.name,
                 "company": self.company,
-                "entry_date": self.posting_date,
-                "entry_lines": [JEl1, JEl2],
+                "fiscal_year": "2020-2021"
             }
         )
-        JE.insert()
+        gl_entry.insert()
+        gl_entry = frappe.get_doc(
+            {
+                "doctype": "GL Entry",
+                "posting_date": self.posting_date,
+                "transaction_date": self.posting_date,
+                "account": rec_not_billed[0].name,
+                "party_type": "Supplier",
+                "party": self.supplier,
+                "debit": 0,
+                "credit": self.total_amount,
+                "against": stock_account[0].name,
+                "against_voucher": "Purchase Receipt",
+                "voucher_number": self.name,
+                "company": self.company,
+                "fiscal_year": "2020-2021"
+            }
+        )
+        gl_entry.insert()
 
 
 def set_missing_values(source, target):
