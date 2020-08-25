@@ -1,0 +1,753 @@
+"Data Import Template"
+"Table:","Desk Page"
+""
+""
+"Notes:"
+"Please do not change the template headings."
+"First data column must be blank."
+"If you are uploading new records, leave the ""name"" (ID) column blank."
+"If you are uploading new records, ""Naming Series"" becomes mandatory, if present."
+"Only mandatory fields are necessary for new records. You can delete non-mandatory columns if you wish."
+"For updating, you can update only selective columns."
+"You can only upload upto 5000 records in one go. (may be less in some cases)"
+""
+"DocType:","Desk Page","","","","","","","","","","","","","","","","","","~","Desk Chart","charts","","~","Desk Shortcut","shortcuts","","","","","","","","~","Desk Card","cards","",""
+"Column Labels:","ID","Name","For User","Extends","Module","Category","Restrict to Domain","Onboarding","Extends Another Page","Is Standard","Developer Mode Only","Disable User Customization","Pin To Top","Pin To Bottom","Hide Custom DocTypes and Reports","Label","Label","Label","","ID","Chart Name","Label","","ID","Type","Link To","Label","Icon","Restrict to Domain","Count Filter","Color","Format","","ID","Label","Links","Hidden"
+"Column Name:","name","label","for_user","extends","module","category","restrict_to_domain","onboarding","extends_another_page","is_standard","developer_mode_only","disable_user_customization","pin_to_top","pin_to_bottom","hide_custom","charts_label","shortcuts_label","cards_label","~","name","chart_name","label","~","name","type","link_to","label","icon","restrict_to_domain","stats_filter","color","format","~","name","label","links","hidden"
+"Mandatory:","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","","Yes","Yes","No","","Yes","Yes","Yes","Yes","No","No","No","No","No","","Yes","Yes","Yes","No"
+"Type:","Data","Data","Data","Link","Link","Select","Link","Link","Check","Check","Check","Check","Check","Check","Check","Data","Data","Data","","Data","Link","Data","","Data","Select","Dynamic Link","Data","Data","Link","Code","Color","Data","","Data","Data","Code","Check"
+"Info:","","","","Valid Desk Page","Valid Module Def","One of: Modules, Domains, Places, Administration","Valid Domain","Valid Module Onboarding","0 or 1","0 or 1","0 or 1","0 or 1","0 or 1","0 or 1","0 or 1","","","","","","Valid Dashboard Chart","","","","One of: DocType, Report, Page, Dashboard","","","","Valid Domain","","","","","","","","0 or 1"
+"Start entering data below this line"
+"","""Accounts""","Accounts","","","Accounts","Modules","","",0,0,0,0,0,0,0,"","","","","","","","","""c9efc70b53""","Report","General Ledger","General Ledger","","","","","","","""f6f2b6f69a""","Manage Accounts","[
+    {
+        ""description"": ""Journal Entry"",
+        ""label"": ""Journal Entry"",
+        ""name"": ""Journal Entry"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Tree of financial accounts."",
+        ""icon"": ""fa fa-sitemap"",
+        ""label"": ""Chart of Accounts"",
+        ""name"": ""Account"",
+        ""route"": ""#Tree/Account"",
+        ""type"": ""doctype""
+    }
+]",0
+"","""Sales""","Sales","","","Sales","Modules","","",0,0,0,0,0,0,0,"","","","","","","","","""ee42407002""","DocType","Purchase Order","Purhase Order","","","","","","","""f2fbbadc8f""","Sales Cycle","[
+    {
+        ""description"": ""Order Products"",
+        ""label"": ""Sales Order"",
+        ""name"": ""Sales Order"",
+        ""type"": ""doctype""
+    },
+ {
+        ""description"": ""Product Receipt."",
+        ""label"": ""Sales Receipt"",
+        ""name"": ""Sales Receipt"",
+        ""onboard"": 1,
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Bills by Suppliers."",
+        ""label"": ""Sales Invoice"",
+        ""name"": ""Sales Invoice"",
+        ""onboard"": 1,
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Bank/Cash transactions against party or for internal transfer"",
+        ""label"": ""Payment Entry"",
+        ""name"": ""Payment Entry"",
+        ""type"": ""doctype""
+    }
+
+]",0
+"","""Purchase""","Purchase","","","Purchase","Modules","","",0,0,0,0,0,0,0,"","","","","","","","","""b21e0f6642""","DocType","Purchase Order","Purhase Order","","","","","","","""ec697ef26b""","Purchase Cycle","[
+    {
+        ""description"": ""Order Products"",
+        ""label"": ""Purchase Order"",
+        ""name"": ""Purchase Order"",
+        ""type"": ""doctype""
+    },
+ {
+        ""description"": ""Product Receipt."",
+        ""label"": ""Purchase Receipt"",
+        ""name"": ""Purchase Receipt"",
+        ""onboard"": 1,
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Bills by Suppliers."",
+        ""label"": ""Purchase Invoice"",
+        ""name"": ""Purchase Invoice"",
+        ""onboard"": 1,
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Bank/Cash transactions against party or for internal transfer"",
+        ""label"": ""Payment Entry"",
+        ""name"": ""Payment Entry"",
+        ""type"": ""doctype""
+    }
+
+]",0
+"","""Manage Party""","Manage Party","","","Accounts","Modules","","",0,1,0,0,0,0,0,"","Party","Party","","","","","","""f6a79bbd5a""","DocType","Party","Party","","","","","","","","","",""
+"","""Product""","Product","","","Accounts","Modules","","",0,1,0,0,0,0,0,"","Product","Product","","","","","","""c5a6465c9a""","DocType","Product","Manage Product","","","","","","","""e3368e307c""","Manage Product","[
+    {
+        ""description"": ""Create Product."",
+        ""label"": ""Product"",
+        ""name"": ""Product"",
+        ""type"": ""doctype""
+    }
+]",0
+"","""Tools""","Tools","","","Automation","Administration","","",0,1,0,0,0,0,0,"","","","","","","","","""a9d5f0b711""","DocType","ToDo","ToDo","","","","","","","""84d6d03d43""","Tools","[
+    {
+        ""description"": ""Documents assigned to you and by you."",
+        ""label"": ""To Do"",
+        ""name"": ""ToDo"",
+        ""onboard"": 1,
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Event and other calendars."",
+        ""label"": ""Calendar"",
+        ""link"": ""List/Event/Calendar"",
+        ""name"": ""Event"",
+        ""onboard"": 1,
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Private and public Notes."",
+        ""label"": ""Note"",
+        ""name"": ""Note"",
+        ""onboard"": 1,
+        ""type"": ""doctype""
+    },
+    {
+        ""label"": ""Files"",
+        ""name"": ""File"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Activity log of all users."",
+        ""label"": ""Activity"",
+        ""name"": ""activity"",
+        ""type"": ""page""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","""b5730ccb4b""","DocType","Note","Note","","","","","","","""f3a98d81f2""","Email","[
+    {
+        ""description"": ""Newsletters to contacts, leads."",
+        ""label"": ""Newsletter"",
+        ""name"": ""Newsletter"",
+        ""onboard"": 1,
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Email Group List"",
+        ""label"": ""Email Group"",
+        ""name"": ""Email Group"",
+        ""type"": ""doctype""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","""42bbb0a6d6""","DocType","File","File","","","","","","","""5b4ddd1ca1""","Automation","[
+    {
+        ""type"": ""doctype"",
+        ""name"": ""Assignment Rule"",
+        ""description"": ""Set up rules for user assignments."",
+        ""label"": ""Assignment Rule""
+    },
+    {
+        ""type"": ""doctype"",
+        ""name"": ""Milestone"",
+        ""description"": ""Tracks milestones on the lifecycle of a document if it undergoes multiple stages."",
+        ""label"": ""Milestone""
+    },
+    {
+        ""type"": ""doctype"",
+        ""name"": ""Auto Repeat"",
+        ""description"": ""Automatically generates recurring documents."",
+        ""label"": ""Auto Repeat""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","""30897bb192""","DocType","Assignment Rule","Assignment Rule","","","","","","","""fcbf3639a7""","Event Streaming","[
+    {
+        ""type"": ""doctype"",
+        ""name"": ""Event Producer"",
+        ""description"": ""The site you want to subscribe to for consuming events."",
+        ""label"": ""Event Producer""
+    },
+    {
+        ""type"": ""doctype"",
+        ""name"": ""Event Consumer"",
+        ""description"": ""The site which is consuming your events."",
+        ""label"": ""Event Consumer""
+    },
+    {
+        ""type"": ""doctype"",
+        ""name"": ""Event Update Log"",
+        ""description"": ""Maintains a Log of all inserts, updates and deletions on Event Producer site for documents that have consumers."",
+        ""label"": ""Event Update Log""
+    },
+    {
+        ""type"": ""doctype"",
+        ""name"": ""Event Sync Log"",
+        ""description"": ""Maintains a log of every event consumed along with the status of the sync and a Resync button in case sync fails."",
+        ""label"": ""Event Sync Log""
+    },
+    {
+        ""type"": ""doctype"",
+        ""name"": ""Document Type Mapping"",
+        ""description"": ""The mapping configuration between two doctypes."",
+        ""label"": ""Document Type Mapping""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","""4277d1b21a""","DocType","Auto Repeat","Auto Repeat","","","","","","","","","",""
+"","""Settings""","Settings","","","Core","Modules","","",0,1,0,1,0,1,0,"","Settings","","","","","","","""4bf8df0d4e""","DocType","System Settings","System Settings","octicon octicon-settings","","","","","","""9b5cdc4921""","Data","[
+    {
+        ""description"": ""Import Data from CSV / Excel files."",
+        ""icon"": ""octicon octicon-cloud-upload"",
+        ""label"": ""Import Data"",
+        ""name"": ""Data Import"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Export Data in CSV / Excel format."",
+        ""icon"": ""octicon octicon-cloud-upload"",
+        ""label"": ""Export Data"",
+        ""name"": ""Data Export"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Update many values at one time."",
+        ""hide_count"": true,
+        ""label"": ""Bulk Update"",
+        ""name"": ""Bulk Update"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""List of backups available for download"",
+        ""icon"": ""fa fa-download"",
+        ""label"": ""Download Backups"",
+        ""name"": ""backups"",
+        ""type"": ""page""
+    },
+    {
+        ""description"": ""Restore or permanently delete a document."",
+        ""label"": ""Deleted Documents"",
+        ""name"": ""Deleted Document"",
+        ""type"": ""doctype""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","""73303373e8""","DocType","Print Settings","Print Settings","fa fa-print","","","","","","""57422791e9""","Email / Notifications","[
+    {
+        ""description"": ""Add / Manage Email Accounts."",
+        ""label"": ""Email Account"",
+        ""name"": ""Email Account"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Add / Manage Email Domains."",
+        ""label"": ""Email Domain"",
+        ""name"": ""Email Domain"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Setup Notifications based on various criteria."",
+        ""label"": ""Notification"",
+        ""name"": ""Notification"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Email Templates for common queries."",
+        ""label"": ""Email Template"",
+        ""name"": ""Email Template"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Setup Reports to be emailed at regular intervals"",
+        ""label"": ""Auto Email Report"",
+        ""name"": ""Auto Email Report"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Create and manage newsletter"",
+        ""label"": ""Newsletter"",
+        ""name"": ""Newsletter"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Configure notifications for mentions, assignments, energy points and more."",
+        ""label"": ""Notification Settings"",
+        ""name"": ""Notification Settings"",
+        ""route"": ""Form/Notification Settings/Administrator"",
+        ""type"": ""doctype""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","""0b1cfc5677""","DocType","Website Settings","Website Settings","fa fa-globe","","","","","","""b325aa5b05""","Website","[
+    {
+        ""description"": ""Setup of top navigation bar, footer and logo."",
+        ""label"": ""Website Settings"",
+        ""name"": ""Website Settings"",
+        ""onboard"": 1,
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""List of themes for Website."",
+        ""label"": ""Website Theme"",
+        ""name"": ""Website Theme"",
+        ""onboard"": 1,
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Javascript to append to the head section of the page."",
+        ""label"": ""Website Script"",
+        ""name"": ""Website Script"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Settings for About Us Page."",
+        ""label"": ""About Us Settings"",
+        ""name"": ""About Us Settings"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Settings for Contact Us Page."",
+        ""label"": ""Contact Us Settings"",
+        ""name"": ""Contact Us Settings"",
+        ""type"": ""doctype""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","""4478bd0efe""","Core","[
+    {
+        ""description"": ""Language, Date and Time settings"",
+        ""hide_count"": true,
+        ""label"": ""System Settings"",
+        ""name"": ""System Settings"",
+        ""type"": ""doctype""
+    },
+   {
+        ""description"": ""Company, Fiscal Year and Currency defaults"",
+        ""hide_count"": true,
+        ""label"": ""Global Defaults"",
+        ""name"": ""Global Defaults"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Log of error on automated events (scheduler)."",
+        ""label"": ""Error Log"",
+        ""name"": ""Error Log"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Log of error during requests."",
+        ""label"": ""Error Snapshot"",
+        ""name"": ""Error Snapshot"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Enable / Disable Domains"",
+        ""hide_count"": true,
+        ""label"": ""Domain Settings"",
+        ""name"": ""Domain Settings"",
+        ""type"": ""doctype""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","""23a996c307""","Printing","[
+    {
+        ""description"": ""Drag and Drop tool to build and customize Print Formats."",
+        ""label"": ""Print Format Builder"",
+        ""name"": ""print-format-builder"",
+        ""type"": ""page""
+    },
+    {
+        ""description"": ""Set default format, page size, print style etc."",
+        ""label"": ""Print Settings"",
+        ""name"": ""Print Settings"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Customized HTML Templates for printing transactions."",
+        ""label"": ""Print Format"",
+        ""name"": ""Print Format"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Stylesheets for Print Formats"",
+        ""label"": ""Print Style"",
+        ""name"": ""Print Style"",
+        ""type"": ""doctype""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","""4b903f4398""","Workflow","[
+    {
+        ""description"": ""Define workflows for forms."",
+        ""label"": ""Workflow"",
+        ""name"": ""Workflow"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""States for workflow (e.g. Draft, Approved, Cancelled)."",
+        ""label"": ""Workflow State"",
+        ""name"": ""Workflow State"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Actions for workflow (e.g. Approve, Cancel)."",
+        ""label"": ""Workflow Action"",
+        ""name"": ""Workflow Action"",
+        ""type"": ""doctype""
+    }
+]",0
+"","""Website""","Website","","","Website","Modules","","Website",0,1,0,0,0,0,0,"","","","","""4e9523897c""","Website Analytics","","","""a7029b7aa2""","DocType","Blog Post","Blog Post","","","{""published"":""1""}","#cef6d1","{} Published","","""c6b7dcd49a""","Setup","[
+    {
+        ""description"": ""Setup of top navigation bar, footer and logo."",
+        ""label"": ""Website Settings"",
+        ""name"": ""Website Settings"",
+        ""onboard"": 1,
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""List of themes for Website."",
+        ""label"": ""Website Theme"",
+        ""name"": ""Website Theme"",
+        ""onboard"": 1,
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Javascript to append to the head section of the page."",
+        ""label"": ""Website Script"",
+        ""name"": ""Website Script"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Settings for About Us Page."",
+        ""label"": ""About Us Settings"",
+        ""name"": ""About Us Settings"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Settings for Contact Us Page."",
+        ""label"": ""Contact Us Settings"",
+        ""name"": ""Contact Us Settings"",
+        ""type"": ""doctype""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","""560297ca47""","DocType","Blogger","Blogger","","","{""disabled"": 0}","#cef6d1","{} Active","","""061538249d""","Blog","[
+    {
+        ""description"": ""Single Post (article)."",
+        ""label"": ""Blog Post"",
+        ""name"": ""Blog Post"",
+        ""onboard"": 1,
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""A user who posts blogs."",
+        ""label"": ""Blogger"",
+        ""name"": ""Blogger"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Categorize blog posts."",
+        ""label"": ""Blog Category"",
+        ""name"": ""Blog Category"",
+        ""type"": ""doctype""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","""add8426ba1""","DocType","Web Page","Web Page","","","{ ""published"": 1 }","#cef6d1","{} Published","","""abf4a8f09f""","Web Site","[
+    {
+        ""description"": ""Content web page."",
+        ""label"": ""Web Page"",
+        ""name"": ""Web Page"",
+        ""onboard"": 1,
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""User editable form on Website."",
+        ""label"": ""Web Form"",
+        ""name"": ""Web Form"",
+        ""onboard"": 1,
+        ""type"": ""doctype""
+    },
+    {
+        ""label"": ""Website Sidebar"",
+        ""name"": ""Website Sidebar"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Embed image slideshows in website pages."",
+        ""label"": ""Website Slideshow"",
+        ""name"": ""Website Slideshow"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Add meta tags to your web pages"",
+        ""label"": ""Website Route Meta"",
+        ""name"": ""Website Route Meta"",
+        ""type"": ""doctype""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","""305e583dfe""","DocType","Web Form","Web Form","","","","","","","""62bed1f866""","Portal","[
+    {
+        ""label"": ""Portal Settings"",
+        ""name"": ""Portal Settings"",
+        ""onboard"": 1,
+        ""type"": ""doctype""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","""401692ae08""","DocType","Website Settings","Website Settings","","","","","","","""810184e278""","Knowledge Base","[
+    {
+        ""label"": ""Help Category"",
+        ""name"": ""Help Category"",
+        ""type"": ""doctype""
+    },
+    {
+        ""label"": ""Help Article"",
+        ""name"": ""Help Article"",
+        ""type"": ""doctype""
+    }
+]",0
+"","""Users""","Users","","","Core","Administration","","",0,1,0,0,0,0,0,"","","","","","","","","""552e22c3a8""","DocType","User","User","","","","","","","""18414fec44""","Users","[
+    {
+        ""description"": ""System and Website Users"",
+        ""label"": ""User"",
+        ""name"": ""User"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""User Roles"",
+        ""label"": ""Role"",
+        ""name"": ""Role"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Role Profile"",
+        ""label"": ""Role Profile"",
+        ""name"": ""Role Profile"",
+        ""type"": ""doctype""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","""35e5b12e05""","DocType","Role","Role","","","","","","","""9975942969""","Logs","[
+    {
+        ""description"": ""Activity Log by "",
+        ""label"": ""Activity Log"",
+        ""name"": ""Activity Log"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""View Log of all print, download and export events"",
+        ""label"": ""Access Log"",
+        ""name"": ""Access Log"",
+        ""type"": ""doctype""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","""63fdf854e1""","Page","permission-manager","Permission Manager","","","","","","","""ba6ffebb23""","Permissions","[
+    {
+        ""description"": ""Set Permissions on Document Types and Roles"",
+        ""icon"": ""fa fa-lock"",
+        ""label"": ""Role Permissions Manager"",
+        ""name"": ""permission-manager"",
+        ""type"": ""page""
+    },
+    {
+        ""description"": ""Restrict user for specific document"",
+        ""icon"": ""fa fa-lock"",
+        ""label"": ""User Permissions"",
+        ""name"": ""User Permission"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Set custom roles for page and report"",
+        ""label"": ""Role Permission for Page and Report"",
+        ""name"": ""Role Permission for Page and Report"",
+        ""type"": ""doctype""
+    },
+    {
+        ""dependencies"": [
+            ""User""
+        ],
+        ""description"": ""Check which Documents are readable by a User"",
+        ""doctype"": ""User"",
+        ""icon"": ""fa fa-eye-open"",
+        ""is_query_report"": true,
+        ""label"": ""Permitted Documents For User"",
+        ""name"": ""Permitted Documents For User"",
+        ""type"": ""report""
+    },
+    {
+        ""dependencies"": [
+            ""DocShare""
+        ],
+        ""description"": ""Report of all document shares"",
+        ""doctype"": ""DocShare"",
+        ""icon"": ""fa fa-share"",
+        ""label"": ""Document Share Report"",
+        ""name"": ""Document Share Report"",
+        ""type"": ""report""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","""0dce174556""","Page","user-profile","User Profile","","","","","","","","","",""
+"","""Customization""","Customization","","","Custom","Administration","","",0,1,0,0,0,0,0,"","","","","","","","","""687cdd6b3a""","DocType","Customize Form","Customize Form","","","","","","","""93d0a60193""","Dashboards","[
+    {
+        ""label"": ""Dashboard"",
+        ""name"": ""Dashboard"",
+        ""type"": ""doctype""
+    },
+    {
+        ""label"": ""Dashboard Chart"",
+        ""name"": ""Dashboard Chart"",
+        ""type"": ""doctype""
+    },
+    {
+        ""label"": ""Dashboard Chart Source"",
+        ""name"": ""Dashboard Chart Source"",
+        ""type"": ""doctype""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","""8577a67c2c""","DocType","Custom Role","Custom Role","","","","","","","""69e00040d8""","Form Customization","[
+    {
+        ""description"": ""Change field properties (hide, readonly, permission etc.)"",
+        ""label"": ""Customize Form"",
+        ""name"": ""Customize Form"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Add fields to forms."",
+        ""label"": ""Custom Field"",
+        ""name"": ""Custom Field"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Add custom javascript to forms."",
+        ""label"": ""Custom Script"",
+        ""name"": ""Custom Script"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Add custom forms."",
+        ""label"": ""DocType"",
+        ""name"": ""DocType"",
+        ""type"": ""doctype""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","""ad819b0963""","DocType","Custom Script","Custom Script","","","","","","","""72613376a5""","Other","[
+    {
+        ""description"": ""Add your own translations"",
+        ""label"": ""Custom Translations"",
+        ""name"": ""Translation"",
+        ""type"": ""doctype""
+    }
+]",0
+"","""Integrations""","Integrations","","","Integrations","Administration","","",0,1,0,1,0,0,0,"","","","","","","","","","","","","","","","","","","""bbb44cf6d2""","Backup","[
+    {
+        ""description"": ""Dropbox backup settings"",
+        ""label"": ""Dropbox Settings"",
+        ""name"": ""Dropbox Settings"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""S3 Backup Settings"",
+        ""label"": ""S3 Backup Settings"",
+        ""name"": ""S3 Backup Settings"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Google Drive Backup."",
+        ""label"": ""Google Drive"",
+        ""name"": ""Google Drive"",
+        ""type"": ""doctype""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","""3c177209c5""","Google Services","[
+    {
+        ""description"": ""Google API Settings."",
+        ""label"": ""Google Settings"",
+        ""name"": ""Google Settings"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Google Contacts Integration."",
+        ""label"": ""Google Contacts"",
+        ""name"": ""Google Contacts"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Google Calendar Integration."",
+        ""label"": ""Google Calendar"",
+        ""name"": ""Google Calendar"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Google Drive Integration."",
+        ""label"": ""Google Drive"",
+        ""name"": ""Google Drive"",
+        ""type"": ""doctype""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","""4383cffecb""","Webhook","[
+    {
+        ""description"": ""Webhooks calling API requests into web apps"",
+        ""label"": ""Webhook"",
+        ""name"": ""Webhook"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Slack Webhooks for internal integration"",
+        ""label"": ""Slack Webhook URL"",
+        ""name"": ""Slack Webhook URL"",
+        ""type"": ""doctype""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","""c221820983""","Authentication","[
+    {
+        ""description"": ""Enter keys to enable login via Facebook, Google, GitHub."",
+        ""label"": ""Social Login Key"",
+        ""name"": ""Social Login Key"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Ldap settings"",
+        ""label"": ""LDAP Settings"",
+        ""name"": ""LDAP Settings"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Register OAuth Client App"",
+        ""label"": ""OAuth Client"",
+        ""name"": ""OAuth Client"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Settings for OAuth Provider"",
+        ""label"": ""OAuth Provider Settings"",
+        ""name"": ""OAuth Provider Settings"",
+        ""type"": ""doctype""
+    }
+]",0
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","""4e5cdfdafa""","Payments","[
+    {
+        ""description"": ""Braintree payment gateway settings"",
+        ""label"": ""Braintree Settings"",
+        ""name"": ""Braintree Settings"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""PayPal payment gateway settings"",
+        ""label"": ""PayPal Settings"",
+        ""name"": ""PayPal Settings"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Razorpay Payment gateway settings"",
+        ""label"": ""Razorpay Settings"",
+        ""name"": ""Razorpay Settings"",
+        ""type"": ""doctype""
+    },
+    {
+        ""description"": ""Stripe payment gateway settings"",
+        ""label"": ""Stripe Settings"",
+        ""name"": ""Stripe Settings"",
+        ""type"": ""doctype""
+    }
+]",0
