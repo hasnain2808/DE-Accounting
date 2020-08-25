@@ -4,11 +4,13 @@
 
 from __future__ import unicode_literals
 import frappe
+from frappe.utils import flt
 from frappe.model.document import Document
 
 class JournalEntry(Document):
 	def on_update(self):
-		company = self.company
+		if self.total_debit != self.total_credit:
+			frappe.throw(f"Total Debit must be equal to Total Credit. The difference is {abs(flt(self.total_debit) - flt(self.total_credit))}")
 		entry_date = self.entry_date
 		reference_number = self.reference_number
 		reference_date = self.reference_date
