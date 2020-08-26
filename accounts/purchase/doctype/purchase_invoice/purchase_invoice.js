@@ -2,25 +2,25 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Purchase Invoice', {
-	refresh: function (frm) {
-		console.log("inside refresh event");
-		cur_frm.add_custom_button(__('Payment Entry'), function () {
-			var method = "accounts.purchase.doctype.purchase_invoice.purchase_invoice.get_payment_entry";
-
-			return frappe.call({
-				method: method,
-				args: {
-					"dt": frm.doc.doctype,
-					"dn": frm.doc.name
-				},
-				callback: function (r) {
-					var doclist = frappe.model.sync(r.message);
-					frappe.set_route("Form", doclist[0].doctype, doclist[0].name);
-				}
-			});
-		})
-	},
+	refresh: add_payment_entry_button,
 });
+
+function add_payment_entry_button(frm) {
+	frm.add_custom_button(__('Create Payment Entry'), function () {
+		var method = "accounts.purchase.doctype.purchase_invoice.purchase_invoice.get_payment_entry";
+		return frappe.call({
+			method: method,
+			args: {
+				"dt": frm.doc.doctype,
+				"dn": frm.doc.name
+			},
+			callback: function (r) {
+				var doclist = frappe.model.sync(r.message);
+				frappe.set_route("Form", doclist[0].doctype, doclist[0].name);
+			}
+		});
+	})
+}
 
 frappe.ui.form.on("Purchase Invoice Item", {
 	qty: function (frm, cdt, cdn) {
