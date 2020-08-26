@@ -4,3 +4,5 @@
 *.swp
 tags
 accounts/docs/current
+accounts/.vscode/settings.json
+.vscode/settings.json

@@ -18,15 +18,19 @@ frappe.ui.form.on('Purchase Receipt', {
 
 
 frappe.ui.form.on("Purchase Receipt Items", {
-	qty : function(frm, cdt, cdn) {
-		var cur_doc = locals[cdt][cdn];
-		cur_doc.amount = cur_doc.qty * cur_doc.buying_price;
-		var sum = 0
-		for(var row in locals[cdt]){
-			console.log(typeof(row))
+	qty: update_total_amount,
+	buying_price: update_total_amount,
+})
+
+function update_total_amount(frm, cdt, cdn){
+	var cur_doc = locals[cdt][cdn];
+	cur_doc.amount = cur_doc.qty * cur_doc.buying_price;
+	var sum = 0
+	for (var row in locals[cdt]) {
+		if (! isNaN(locals[cdt][row].amount)) {
 			sum+=locals[cdt][row].amount;
 		}
-		frm.set_value("total_amount", sum)
-		frm.refresh_fields();
-	},
-})
+	}
+	frm.set_value("total_amount", sum)
+	frm.refresh_fields();
+}
