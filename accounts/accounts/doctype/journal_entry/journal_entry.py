@@ -4,17 +4,17 @@
 
 from __future__ import unicode_literals
 import frappe
+from frappe import _
 from frappe.utils import flt
 from frappe.model.document import Document
 
 class JournalEntry(Document):
 	def on_update(self):
 		if self.total_debit != self.total_credit:
-			frappe.throw(f"Total Debit must be equal to Total Credit. The difference is {abs(flt(self.total_debit) - flt(self.total_credit))}")
+			frappe.throw(_(f"Total Debit must be equal to Total Credit. The difference is {abs(flt(self.total_debit) - flt(self.total_credit))}"))
 		entry_date = self.entry_date
 		reference_number = self.reference_number
 		reference_date = self.reference_date
-		# print(self.entry_lines[0].account)
 		debit_accounts = []
 		credit_accounts = []
 		for entry_line in self.entry_lines:
@@ -24,9 +24,6 @@ class JournalEntry(Document):
 				credit_accounts.append(entry_line.account)
 		debit_accounts = ", ".join(debit_accounts)
 		credit_accounts = ", ".join(credit_accounts)
-		print(debit_accounts)
-		print(credit_accounts)
-		print(company)
 		for entry_line in self.entry_lines:
 			gl_entry = frappe.get_doc(
 				{

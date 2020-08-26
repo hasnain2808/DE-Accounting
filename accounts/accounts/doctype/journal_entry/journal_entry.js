@@ -17,8 +17,6 @@ frappe.ui.form.on("Journal Entry lines", {
 
 function populate_total(frm, cdt, cdn){
 	var cur_doc = locals[cdt][cdn];
-	// cur_doc.amount = cur_doc.qty * cur_doc.selling_price;
-	// console.log(cur_doc.qty * cur_doc.selling_price)
 	var total_debit = 0
 	var total_credit = 0
 	for(var row in locals[cdt]){
@@ -30,8 +28,6 @@ function populate_total(frm, cdt, cdn){
 			total_credit+=locals[cdt][row].credit;
 		}
 	}
-	console.log(total_debit)
-	console.log(total_credit)
 	frm.set_value("total_debit", total_debit)
 	frm.set_value("total_credit", total_credit)
 	frm.refresh_fields();

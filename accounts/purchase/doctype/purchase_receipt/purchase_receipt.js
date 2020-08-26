@@ -7,20 +7,10 @@ frappe.ui.form.on('Purchase Receipt', {
 	// },
 	refresh: function(frm) {
 		console.log("inside refresh event");
-		// frm.add_custom_button(__("Generate Purchase Invoice"), function() {
-		// 		frappe.route_options = {
-		// 			supplier: frm.doc.supplier,
-		// 			company: frm.doc.company,
-		// 			product_list: frm.doc.product_list,
-		// 			total_amount: frm.doc.total_amount
-		// 		},
-		// 		console.log(frappe.route_options)
-		// 		frappe.set_route("Form", "Purchase Invoice", "New Purchase Invoice", );
-		// 	});
-		cur_frm.add_custom_button(__('Generate Purchase Invoice'),function() {
+		cur_frm.add_custom_button(__('Create Purchase Invoice'),function() {
 			frappe.model.open_mapped_doc({
 				method: "accounts.purchase.doctype.purchase_receipt.purchase_receipt.make_purchase_invoice",
-				frm: cur_frm
+				frm: frm
 			})
 		})
 	},
