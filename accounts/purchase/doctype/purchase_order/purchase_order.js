@@ -29,10 +29,10 @@ frappe.ui.form.on("Purchase Order Item", {
 })
 
 function update_total_amount(frm, cdt, cdn){
-	var cur_doc = locals[cdt][cdn];
+	let cur_doc = locals[cdt][cdn];
 	cur_doc.amount = cur_doc.qty * cur_doc.buying_price;
-	var sum = 0
-	for (var row in locals[cdt]) {
+	let sum = 0
+	for (let row in locals[cdt]) {
 		if (! isNaN(locals[cdt][row].amount)) {
 			sum+=locals[cdt][row].amount;
 		}	}

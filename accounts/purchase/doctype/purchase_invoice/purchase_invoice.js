@@ -7,7 +7,7 @@ frappe.ui.form.on('Purchase Invoice', {
 
 function add_payment_entry_button(frm) {
 	frm.add_custom_button(__('Create Payment Entry'), function () {
-		var method = "accounts.purchase.doctype.purchase_invoice.purchase_invoice.get_payment_entry";
+		let method = "accounts.purchase.doctype.purchase_invoice.purchase_invoice.get_payment_entry";
 		return frappe.call({
 			method: method,
 			args: {
@@ -15,7 +15,7 @@ function add_payment_entry_button(frm) {
 				"dn": frm.doc.name
 			},
 			callback: function (r) {
-				var doclist = frappe.model.sync(r.message);
+				let doclist = frappe.model.sync(r.message);
 				frappe.set_route("Form", doclist[0].doctype, doclist[0].name);
 			}
 		});
@@ -28,10 +28,10 @@ frappe.ui.form.on("Purchase Invoice Item", {
 })
 
 function update_total_amount(frm, cdt, cdn){
-	var cur_doc = locals[cdt][cdn];
+	let cur_doc = locals[cdt][cdn];
 	cur_doc.amount = cur_doc.qty * cur_doc.buying_price;
-	var sum = 0
-	for (var row in locals[cdt]) {
+	let sum = 0
+	for (let row in locals[cdt]) {
 		if (! isNaN(locals[cdt][row].amount)) {
 			sum+=locals[cdt][row].amount;
 		}
