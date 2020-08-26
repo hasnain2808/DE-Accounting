@@ -4,7 +4,7 @@
 frappe.ui.form.on('Sales Invoice', {
 	refresh: function(frm) {
 		console.log("inside refresh event");
-		cur_frm.add_custom_button(__('Create Payment Entry'),function() {
+		frm.add_custom_button(__('Create Payment Entry'),function() {
 			var method = "accounts.sales.doctype.sales_invoice.sales_invoice.get_payment_entry";
 			return frappe.call({
 				method: method,

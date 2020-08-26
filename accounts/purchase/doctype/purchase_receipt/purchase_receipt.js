@@ -7,7 +7,7 @@ frappe.ui.form.on('Purchase Receipt', {
 	// },
 	refresh: function(frm) {
 		console.log("inside refresh event");
-		cur_frm.add_custom_button(__('Create Purchase Invoice'),function() {
+		frm.add_custom_button(__('Create Purchase Invoice'),function() {
 			frappe.model.open_mapped_doc({
 				method: "accounts.purchase.doctype.purchase_receipt.purchase_receipt.make_purchase_invoice",
 				frm: frm
