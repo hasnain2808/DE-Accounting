@@ -16,23 +16,95 @@ frappe.ui.form.on("Journal Entry lines", {
 
 
 function populate_total(frm, cdt, cdn){
-	var cur_doc = locals[cdt][cdn];
-	// cur_doc.amount = cur_doc.qty * cur_doc.selling_price;
-	// console.log(cur_doc.qty * cur_doc.selling_price)
-	var total_debit = 0
-	var total_credit = 0
-	for(var row in locals[cdt]){
-		console.log(row)
-		if (! isNaN(locals[cdt][row].debit)) {
-			total_debit+=locals[cdt][row].debit;
-		}
-		if (! isNaN(locals[cdt][row].credit)) {
-			total_credit+=locals[cdt][row].credit;
-		}
-	}
-	console.log(total_debit)
-	console.log(total_credit)
+	// let cur_doc = locals[cdt][cdn];
+	// let cur_dt = locals[cdt];
+	// let total_debit = flt(0);
+	// let total_credit = flt(0);
+	// for(let row in cur_dt){
+	// 	console.log(total_credit)
+	// 	console.log(total_credit)
+	// 	if (! isNaN(cur_dt[row].debit)) {
+	// 		total_debit+=flt(cur_dt[row].debit);
+	// 	}
+	// 	if (! isNaN(cur_dt[row].credit)) {
+	// 		total_credit+=flt(cur_dt[row].credit);
+	// 	}
+	// }
+	// console.log(total_credit)
+	// console.log(total_credit)
+	// frm.set_value("total_debit", total_debit)
+	// frm.set_value("total_credit", total_credit)
+	// frm.refresh_fields();
+	let cur_doc = locals[cdt][cdn];
+	// console.log(frm.doc.product_list)
+	// cur_doc.amount = cur_doc.qty * cur_doc.buying_price;
+	let sum = 0.0
+	let total_debit = flt(0);
+	let total_credit = flt(0);
+
+	// if (! isNaN(frm.doc) ) {
+		console.log("inside")
+		frm.doc.entry_lines.forEach(element => {
+			console.log(element)
+
+			if (! isNaN(element.debit)) {
+				total_debit+=flt(element.debit);
+			}
+			if (! isNaN(element.credit)) {
+				total_credit+=flt(element.credit);
+			}
+
+		});
+	// }
 	frm.set_value("total_debit", total_debit)
-	frm.set_value("total_credit", total_credit)
+	frm.set_value("total_credit", total_credit);
 	frm.refresh_fields();
+
 }
+
+
+// function update_total_amount(frm, cdt, cdn){
+// 	let cur_doc = locals[cdt][cdn];
+// 	// console.log(frm.doc.product_list)
+// 	// cur_doc.amount = cur_doc.qty * cur_doc.buying_price;
+// 	let sum = 0.0
+// 	let total_debit = flt(0);
+// 	let total_credit = flt(0);
+
+// 	if (! isNaN(frm.doc) ) {
+// 		frm.doc.entry_lines.forEach(element => {
+// 			console.log(element)
+
+// 			if (! isNaN(element.debit)) {
+// 				total_debit+=flt(element.debit);
+// 			}
+// 			if (! isNaN(element.credit)) {
+// 				total_credit+=flt(element.credit);
+// 			}
+
+// 		});
+// 	}
+// 	frm.set_value("total_debit", total_debit)
+// 	frm.set_value("total_credit", total_credit);
+// }
+
+
+
+
+// let cur_dt = locals[cdt];
+// let total_debit = flt(0);
+// let total_credit = flt(0);
+// for(let row in cur_dt){
+// 	console.log(total_credit)
+// 	console.log(total_credit)
+// 	if (! isNaN(cur_dt[row].debit)) {
+// 		total_debit+=flt(cur_dt[row].debit);
+// 	}
+// 	if (! isNaN(cur_dt[row].credit)) {
+// 		total_credit+=flt(cur_dt[row].credit);
+// 	}
+// }
+// console.log(total_credit)
+// console.log(total_credit)
+// frm.set_value("total_debit", total_debit)
+// frm.set_value("total_credit", total_credit)
