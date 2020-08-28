@@ -4,8 +4,8 @@
 frappe.ui.form.on('Sales Invoice', {
 	refresh: function(frm) {
 		console.log("inside refresh event");
-		cur_frm.add_custom_button(__('Payment Entry'),function() {
-			var method = "accounts.sales.doctype.sales_invoice.sales_invoice.get_payment_entry";
+		frm.add_custom_button(__('Create Payment Entry'),function() {
+			let method = "accounts.sales.doctype.sales_invoice.sales_invoice.get_payment_entry";
 			return frappe.call({
 				method: method,
 				args: {
@@ -13,7 +13,7 @@ frappe.ui.form.on('Sales Invoice', {
 					"dn": frm.doc.name
 				},
 				callback: function(r) {
-					var doclist = frappe.model.sync(r.message);
+					let doclist = frappe.model.sync(r.message);
 					frappe.set_route("Form", doclist[0].doctype, doclist[0].name);
 				}
 			});

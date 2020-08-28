@@ -3,15 +3,16 @@
 
 frappe.ui.form.on('Delivery Note', {
 	refresh: function(frm) {
-		console.log("inside refresh event");
-		cur_frm.add_custom_button(__('Invoice'),function() {
+		frm.add_custom_button(__('Create Sales Invoice'),function() {
 			frappe.model.open_mapped_doc({
 				method: "accounts.sales.doctype.delivery_note.delivery_note.make_sales_invoice",
-				frm: cur_frm
+				frm: frm
 			})
 		})
 	}
 });
+
+
 frappe.ui.form.on("Delivery Note Item", {
 	qty : update_total_amount,
 	selling_price : update_total_amount,
