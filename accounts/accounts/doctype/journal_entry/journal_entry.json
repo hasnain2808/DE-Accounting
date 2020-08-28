@@ -1,6 +1,6 @@
 {
  "actions": [],
- "autoname": "JE.#####",
+ "autoname": "ACC-JE.#####",
  "creation": "2020-08-14 16:39:19.231021",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -18,7 +18,8 @@
   "total_section",
   "total_debit",
   "column_break_10",
-  "total_credit"
+  "total_credit",
+  "amended_from"
  ],
  "fields": [
   {
@@ -89,10 +90,20 @@
    "fieldname": "references_section",
    "fieldtype": "Section Break",
    "label": "References"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Journal Entry",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
+ "is_submittable": 1,
  "links": [],
- "modified": "2020-08-25 14:59:57.795587",
+ "modified": "2020-08-27 16:28:27.517275",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Journal Entry",

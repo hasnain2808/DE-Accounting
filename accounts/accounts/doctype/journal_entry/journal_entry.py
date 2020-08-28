@@ -36,11 +36,13 @@ class JournalEntry(Document):
 					"debit": entry_line.debit,
 					"credit": entry_line.credit,
 					"against": debit_accounts if entry_line.debit == 0 else credit_accounts,
-					"against_voucher": "",
-					"voucher_number": "",
-					"company": company,
+					"against_voucher": "Journal Entry",
+					"voucher_number": self.name,
+					"company": self.company,
 					"fiscal_year": "2020-2021"
 				}
 			)
 			gl_entry.insert()
 
+	def on_cancel(self):
+		print(self.docstatus)

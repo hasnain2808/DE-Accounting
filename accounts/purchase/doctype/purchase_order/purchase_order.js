@@ -30,12 +30,18 @@ frappe.ui.form.on("Purchase Order Item", {
 
 function update_total_amount(frm, cdt, cdn){
 	let cur_doc = locals[cdt][cdn];
+	// console.log(frm.doc.product_list)
 	cur_doc.amount = cur_doc.qty * cur_doc.buying_price;
-	let sum = 0
-	for (let row in locals[cdt]) {
-		if (! isNaN(locals[cdt][row].amount)) {
-			sum+=locals[cdt][row].amount;
-		}	}
+	let sum = 0.0
+	if (! isNaN(frm.doc) ) {
+		frm.doc.product_list.forEach(element => {
+			console.log(element)
+			if (!( isNaN(element) && isNaN(element.amount))) {
+				sum+=flt(element.amount);
+				console.log(sum)
+			}
+		});
+	}
 	frm.set_value("total_amount", sum)
 	frm.refresh_fields();
 }
