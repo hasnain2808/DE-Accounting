@@ -1,0 +1,55 @@
+{
+ "actions": [],
+ "creation": "2020-08-31 17:21:42.827342",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "stock_account",
+  "expense_account",
+  "income_account"
+ ],
+ "fields": [
+  {
+   "fieldname": "stock_account",
+   "fieldtype": "Link",
+   "label": "Stock Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "expense_account",
+   "fieldtype": "Link",
+   "label": "Expense Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "income_account",
+   "fieldtype": "Link",
+   "label": "Income Account",
+   "options": "Account"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2020-08-31 17:21:42.827342",
+ "modified_by": "Administrator",
+ "module": "Accounts",
+ "name": "Account Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

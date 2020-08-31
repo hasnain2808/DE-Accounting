@@ -10,18 +10,18 @@ from frappe.model.mapper import get_mapped_doc
 
 class PurchaseReceipt(Document):
     def on_submit(self):
-        stock_account = frappe.get_list(
-            "Account",
-            filters={"company_name": self.company, "account_name": "Stock in Hand"},
-        )
-        print(stock_account)
-        rec_not_billed = frappe.get_list(
-            "Account",
-            filters={
-                "company_name": self.company,
-                "account_name": "Asset Received But not Billed",
-            },
-        )
+        # stock_account = frappe.get_list(
+        #     "Account",
+        #     filters={"company_name": self.company, "account_name": "Stock in Hand"},
+        # )
+        # print(stock_account)
+        # rec_not_billed = frappe.get_list(
+        #     "Account",
+        #     filters={
+        #         "company_name": self.company,
+        #         "account_name": "Asset Received But not Billed",
+        #     },
+        # )
         # print(rec_not_billed)
 
         # JEl1 = {
@@ -51,12 +51,12 @@ class PurchaseReceipt(Document):
                 "doctype": "GL Entry",
                 "posting_date": self.posting_date,
                 "transaction_date": self.posting_date,
-                "account": stock_account[0].name,
+                "account": self.debit_account,
                 "party_type": "Supplier",
                 "party": self.supplier,
                 "debit": self.total_amount,
                 "credit": 0,
-                "against": rec_not_billed[0].name,
+                "against": self.credit_account,
                 "against_voucher": "Purchase Receipt",
                 "voucher_number": self.name,
                 "company": self.company,
@@ -69,12 +69,12 @@ class PurchaseReceipt(Document):
                 "doctype": "GL Entry",
                 "posting_date": self.posting_date,
                 "transaction_date": self.posting_date,
-                "account": rec_not_billed[0].name,
+                "account": self.credit_account,
                 "party_type": "Supplier",
                 "party": self.supplier,
                 "debit": 0,
                 "credit": self.total_amount,
-                "against": stock_account[0].name,
+                "against": self.debit_account,
                 "against_voucher": "Purchase Receipt",
                 "voucher_number": self.name,
                 "company": self.company,
