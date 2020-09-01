@@ -4,6 +4,15 @@
 
 frappe.query_reports["Profit and Loss"] = {
 	"filters": [
-
-	]
+        {
+            fieldname: 'company',
+            label: __('Company'),
+            fieldtype: 'Link',
+            options: 'Company',
+        },
+	],
+	"treeView": true,
+	"name_field": "account",
+	"parent_field": "parent_account",
+	"initial_depth": 2
 };
