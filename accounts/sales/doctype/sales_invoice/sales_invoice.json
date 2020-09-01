@@ -12,7 +12,8 @@
   "posting_date",
   "section_break_5",
   "product_list",
-  "total_amount"
+  "total_amount",
+  "amended_from"
  ],
  "fields": [
   {
@@ -56,10 +57,20 @@
    "label": "Customer",
    "options": "Customer",
    "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Sales Invoice",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
+ "is_submittable": 1,
  "links": [],
- "modified": "2020-08-19 18:31:53.707562",
+ "modified": "2020-08-21 16:40:13.551483",
  "modified_by": "Administrator",
  "module": "Sales",
  "name": "Sales Invoice",

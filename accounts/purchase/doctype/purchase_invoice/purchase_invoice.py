@@ -6,10 +6,12 @@ from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
 from frappe.model.mapper import get_mapped_doc
+from frappe.utils import nowdate
+from frappe import _, scrub
 
 
 class PurchaseInvoice(Document):
-    def on_update(self):
+    def on_submit(self):
         creditors_account = frappe.get_list(
             "Account",
             filters={"company_name": self.company, "account_name": "Creditors"},
@@ -23,31 +25,111 @@ class PurchaseInvoice(Document):
             },
         )
         print(rec_not_billed)
-        JEl1 = {
-            "credit": self.total_amount,
-            "debit": 0,
-            "account": creditors_account[0].name,
-            "party_type": "Supplier",
-            "party_name": self.supplier,
-        }
-        JEl2 = {
-            "credit": 0,
-            "debit": self.total_amount,
-            "account": rec_not_billed[0].name,
-        }
-        JE = frappe.get_doc(
+        # JEl1 = {
+        #     "credit": self.total_amount,
+        #     "debit": 0,
+        #     "account": creditors_account[0].name,
+        #     "party_type": "Supplier",
+        #     "party_name": self.supplier,
+        # }
+        # JEl2 = {
+        #     "credit": 0,
+        #     "debit": self.total_amount,
+        #     "account": rec_not_billed[0].name,
+        # }
+        # JE = frappe.get_doc(
+        #     {
+        #         "doctype": "Journal Entry",
+        #         "company": self.company,
+        #         "entry_date": self.posting_date,
+        #         "entry_lines": [JEl1, JEl2]
+        #     }
+        # )
+        # JE.insert()
+		# for entry_line in self.entry_lines:
+        gl_entry = frappe.get_doc(
             {
-                "doctype": "Journal Entry",
+                "doctype": "GL Entry",
+                "posting_date": self.posting_date,
+                "transaction_date": self.posting_date,
+                "account": rec_not_billed[0].name,
+                "party_type": "Supplier",
+                "party": self.supplier,
+                "debit": self.total_amount,
+                "credit": 0,
+                "against": creditors_account[0].name,
+                "against_voucher": "Purchase Invoice",
+                "voucher_number": self.name,
                 "company": self.company,
-                "entry_date": self.posting_date,
-                "entry_lines": [JEl1, JEl2]
-                # "reference_number": ,
-                # "reference_date": ,
+                "fiscal_year": "2020-2021"
             }
         )
-        JE.insert()
+        gl_entry.insert()
+        gl_entry = frappe.get_doc(
+            {
+                "doctype": "GL Entry",
+                "posting_date": self.posting_date,
+                "transaction_date": self.posting_date,
+                "account": creditors_account[0].name,
+                "party_type": "Supplier",
+                "party": self.supplier,
+                "debit": 0,
+                "credit": self.total_amount,
+                "against": rec_not_billed[0].name,
+                "against_voucher": "Purchase Invoice",
+                "voucher_number": self.name,
+                "company": self.company,
+                "fiscal_year": "2020-2021"
+            }
+        )
+        gl_entry.insert()
 
 
 def set_missing_values(source, target):
     target.run_method("set_missing_values")
-    # target.run_method("calculate_taxes_and_totals")
+
+
+@frappe.whitelist()
+def get_payment_entry(dt, dn, party_amount=None, bank_account=None, bank_amount=None):
+    doc = frappe.get_doc(dt, dn)
+
+    creditors_account = frappe.get_list(
+        "Account", filters={"company_name": doc.company, "account_name": "Creditors"},
+    )
+    print(creditors_account)
+    bank_account = frappe.get_list(
+        "Account",
+        filters={"company_name": doc.company, "account_name": "Bank Accounts",},
+    )
+    chosen_bank_account = frappe.get_list(
+        "Account",
+        filters={"company_name": doc.company, "parent_account": bank_account[0].name},
+    )
+
+    print(doc)
+    print("-" * 200)
+    party_type = "Supplier"
+    payment_type = "Pay"
+    total_amount = doc.get("total_amount")
+    print(total_amount)
+    pe = frappe.new_doc("Payment Entry")
+    pe.payment_type = payment_type
+    pe.company = doc.company
+    pe.posting_date = nowdate()
+    pe.party_type = party_type
+    pe.party_name = doc.get(scrub(party_type))
+    pe.total_amount = total_amount
+    pe.debit_account = creditors_account[0].name
+    pe.credit_account = chosen_bank_account[0].name
+    pe.append(
+        "reference",
+        {
+            "reference_type": "Purchase Invoice",
+            "reference_name": doc.get("name"),
+            "total_amount": total_amount,
+        },
+    )
+    print("-" * 200)
+    print(pe)
+    return pe
+

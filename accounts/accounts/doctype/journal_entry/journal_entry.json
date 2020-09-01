@@ -1,16 +1,25 @@
 {
  "actions": [],
- "autoname": "JE.#####",
+ "autoname": "ACC-JE.#####",
  "creation": "2020-08-14 16:39:19.231021",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "company",
+  "column_break_2",
   "entry_date",
+  "accounting_entries_section",
   "entry_lines",
+  "references_section",
   "reference_number",
-  "reference_date"
+  "column_break_6",
+  "reference_date",
+  "total_section",
+  "total_debit",
+  "column_break_10",
+  "total_credit",
+  "amended_from"
  ],
  "fields": [
   {
@@ -44,10 +53,57 @@
    "fieldname": "reference_date",
    "fieldtype": "Date",
    "label": "Reference Date"
+  },
+  {
+   "fieldname": "total_debit",
+   "fieldtype": "Read Only",
+   "label": "Total Debit"
+  },
+  {
+   "fieldname": "total_credit",
+   "fieldtype": "Read Only",
+   "label": "Total Credit"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "accounting_entries_section",
+   "fieldtype": "Section Break",
+   "label": "Accounting Entries"
+  },
+  {
+   "fieldname": "total_section",
+   "fieldtype": "Section Break",
+   "label": "Total"
+  },
+  {
+   "fieldname": "references_section",
+   "fieldtype": "Section Break",
+   "label": "References"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Journal Entry",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
+ "is_submittable": 1,
  "links": [],
- "modified": "2020-08-17 10:26:09.056330",
+ "modified": "2020-08-27 16:28:27.517275",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Journal Entry",
