@@ -12,19 +12,19 @@ from frappe import _, scrub
 
 class PurchaseInvoice(Document):
     def on_submit(self):
-        creditors_account = frappe.get_list(
-            "Account",
-            filters={"company_name": self.company, "account_name": "Creditors"},
-        )
-        print(creditors_account)
-        rec_not_billed = frappe.get_list(
-            "Account",
-            filters={
-                "company_name": self.company,
-                "account_name": "Asset Received But not Billed",
-            },
-        )
-        print(rec_not_billed)
+        # creditors_account = frappe.get_list(
+        #     "Account",
+        #     filters={"company_name": self.company, "account_name": "Creditors"},
+        # )
+        # print(creditors_account)
+        # rec_not_billed = frappe.get_list(
+        #     "Account",
+        #     filters={
+        #         "company_name": self.company,
+        #         "account_name": "Asset Received But not Billed",
+        #     },
+        # )
+        # print(rec_not_billed)
         # JEl1 = {
         #     "credit": self.total_amount,
         #     "debit": 0,
@@ -52,12 +52,12 @@ class PurchaseInvoice(Document):
                 "doctype": "GL Entry",
                 "posting_date": self.posting_date,
                 "transaction_date": self.posting_date,
-                "account": rec_not_billed[0].name,
+                "account": self.debit_account,
                 "party_type": "Supplier",
                 "party": self.supplier,
                 "debit": self.total_amount,
                 "credit": 0,
-                "against": creditors_account[0].name,
+                "against": self.credit_account,
                 "against_voucher": "Purchase Invoice",
                 "voucher_number": self.name,
                 "company": self.company,
@@ -70,12 +70,12 @@ class PurchaseInvoice(Document):
                 "doctype": "GL Entry",
                 "posting_date": self.posting_date,
                 "transaction_date": self.posting_date,
-                "account": creditors_account[0].name,
+                "account": self.credit_account,
                 "party_type": "Supplier",
                 "party": self.supplier,
                 "debit": 0,
                 "credit": self.total_amount,
-                "against": rec_not_billed[0].name,
+                "against": self.debit_account,
                 "against_voucher": "Purchase Invoice",
                 "voucher_number": self.name,
                 "company": self.company,

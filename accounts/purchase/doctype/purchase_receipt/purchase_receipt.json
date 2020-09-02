@@ -13,7 +13,11 @@
   "section_break_5",
   "product_list",
   "total_amount",
-  "amended_from"
+  "amended_from",
+  "accounting_details_section",
+  "debit_account",
+  "column_break_11",
+  "credit_account"
  ],
  "fields": [
   {
@@ -66,11 +70,34 @@
    "options": "Purchase Receipt",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "debit_account",
+   "fieldtype": "Link",
+   "label": "Debit Account",
+   "options": "Account",
+   "reqd": 1
+  },
+  {
+   "fieldname": "credit_account",
+   "fieldtype": "Link",
+   "label": "Credit Account",
+   "options": "Account",
+   "reqd": 1
+  },
+  {
+   "fieldname": "accounting_details_section",
+   "fieldtype": "Section Break",
+   "label": "Accounting Details"
+  },
+  {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2020-08-21 16:38:46.075205",
+ "modified": "2020-08-31 13:06:53.637427",
  "modified_by": "Administrator",
  "module": "Purchase",
  "name": "Purchase Receipt",
