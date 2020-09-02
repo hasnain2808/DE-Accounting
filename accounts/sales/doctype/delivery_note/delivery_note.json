@@ -12,7 +12,12 @@
   "posting_date",
   "section_break_5",
   "product_list",
-  "total_amount"
+  "total_amount",
+  "accounting_details_section",
+  "debit_account",
+  "column_break_11",
+  "credit_account",
+  "amended_from"
  ],
  "fields": [
   {
@@ -56,10 +61,43 @@
    "fieldname": "total_amount",
    "fieldtype": "Currency",
    "label": "Total Amount"
+  },
+  {
+   "fieldname": "debit_account",
+   "fieldtype": "Link",
+   "label": "Debit Account",
+   "options": "Account",
+   "reqd": 1
+  },
+  {
+   "fieldname": "credit_account",
+   "fieldtype": "Link",
+   "label": "Credit Account",
+   "options": "Account",
+   "reqd": 1
+  },
+  {
+   "fieldname": "accounting_details_section",
+   "fieldtype": "Section Break",
+   "label": "Accounting Details"
+  },
+  {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Delivery Note",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
+ "is_submittable": 1,
  "links": [],
- "modified": "2020-08-19 14:53:58.931595",
+ "modified": "2020-09-02 13:15:22.595623",
  "modified_by": "Administrator",
  "module": "Sales",
  "name": "Delivery Note",

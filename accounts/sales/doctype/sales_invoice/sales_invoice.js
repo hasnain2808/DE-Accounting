@@ -3,6 +3,11 @@
 
 frappe.ui.form.on('Sales Invoice', {
 	refresh: function(frm) {
+		frm.set_value("credit_account", "Sales - " + frm.doc.company)
+		frm.set_value("debit_account", "Debtors - " + frm.doc.company)
+		frm.refresh_fields();
+		set_debit_account_filter(frm)
+		set_credit_account_filter(frm)
 		console.log("inside refresh event");
 		frm.add_custom_button(__('Create Payment Entry'),function() {
 			let method = "accounts.sales.doctype.sales_invoice.sales_invoice.get_payment_entry";
@@ -19,9 +24,37 @@ frappe.ui.form.on('Sales Invoice', {
 			});
 		})
 	},
+	company: function (frm) {
+		frm.set_value("credit_account", "Sales - " + frm.doc.company)
+		frm.set_value("debit_account", "Debtors - " + frm.doc.company)
+		frm.refresh_fields();
+		set_debit_account_filter(frm)
+		set_credit_account_filter(frm)
+	},
 });
 
+function set_debit_account_filter(frm) {
+	frm.set_query("debit_account", function () {
+		return {
+			"filters": {
+				"company_name": frm.doc.company,
+				"parent_account": "Accounts Receivable - " + frm.doc.company
 
+			}
+		};
+	});
+}
+
+function set_credit_account_filter(frm) {
+	frm.set_query("credit_account", function () {
+		return {
+			"filters": {
+				"company_name": frm.doc.company,
+				"parent_account": "Direct Income - " + frm.doc.company
+			}
+		};
+	});
+}
 
 frappe.ui.form.on("Sales Invoice Item", {
 	qty : update_total_amount,

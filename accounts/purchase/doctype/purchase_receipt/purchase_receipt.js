@@ -7,6 +7,8 @@ frappe.ui.form.on('Purchase Receipt', {
 	// },
 	refresh: function (frm) {
 		// set_default_accounts(frm);
+		set_debit_account_filter(frm);
+		set_credit_account_filter(frm);
 		frm.add_custom_button(__('Create Purchase Invoice'), function () {
 			frappe.model.open_mapped_doc({
 				method: "accounts.purchase.doctype.purchase_receipt.purchase_receipt.make_purchase_invoice",

@@ -12,14 +12,14 @@ from frappe import _, scrub
 
 class SalesInvoice(Document):
     def on_submit(self):
-        sales_account = frappe.get_list(
-            "Account", filters={"company_name": self.company, "account_name": "Sales"}
-        )
-        print(sales_account)
-        debtors_account = frappe.get_list(
-            "Account", filters={"company_name": self.company, "account_name": "Debtors"}
-        )
-        print(debtors_account)
+        # sales_account = frappe.get_list(
+        #     "Account", filters={"company_name": self.company, "account_name": "Sales"}
+        # )
+        # print(sales_account)
+        # debtors_account = frappe.get_list(
+        #     "Account", filters={"company_name": self.company, "account_name": "Debtors"}
+        # )
+        # print(debtors_account)
         # JEl1 = {
         #     "credit": self.total_amount,
         #     "debit": 0,
@@ -46,12 +46,12 @@ class SalesInvoice(Document):
                 "doctype": "GL Entry",
                 "posting_date": self.posting_date,
                 "transaction_date": self.posting_date,
-                "account": debtors_account[0].name,
+                "account": self.debit_account,
                 "party_type": "Customer",
                 "party": self.customer,
                 "debit": self.total_amount,
                 "credit": 0,
-                "against": sales_account[0].name,
+                "against": self.credit_account,
                 "against_voucher": "Sales Invoice",
                 "voucher_number": self.name,
                 "company": self.company,
@@ -64,12 +64,12 @@ class SalesInvoice(Document):
                 "doctype": "GL Entry",
                 "posting_date": self.posting_date,
                 "transaction_date": self.posting_date,
-                "account": sales_account[0].name,
+                "account": self.credit_account,
                 "party_type": "Customer",
                 "party": self.customer,
                 "debit": 0,
                 "credit": self.total_amount,
-                "against": debtors_account[0].name,
+                "against": self.debit_account,
                 "against_voucher": "Sales Invoice",
                 "voucher_number": self.name,
                 "company": self.company,

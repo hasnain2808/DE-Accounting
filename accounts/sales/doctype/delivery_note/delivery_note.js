@@ -3,14 +3,47 @@
 
 frappe.ui.form.on('Delivery Note', {
 	refresh: function(frm) {
+		set_debit_account_filter(frm)
+		set_credit_account_filter(frm)
 		frm.add_custom_button(__('Create Sales Invoice'),function() {
 			frappe.model.open_mapped_doc({
 				method: "accounts.sales.doctype.delivery_note.delivery_note.make_sales_invoice",
 				frm: frm
 			})
 		})
-	}
+	},
+	company: function (frm) {
+		frm.set_value("credit_account", "Stock in Hand - " + frm.doc.company)
+		frm.set_value("debit_account", "Stock Expense - " + frm.doc.company)
+		frm.refresh_fields();
+		set_debit_account_filter(frm)
+		set_credit_account_filter(frm)
+	},
 });
+
+function set_debit_account_filter(frm) {
+	frm.set_query("debit_account", function () {
+		return {
+			"filters": {
+				"company_name": frm.doc.company,
+				"parent_account": "Direct Expense - " + frm.doc.company
+
+			}
+		};
+	});
+}
+
+function set_credit_account_filter(frm) {
+	frm.set_query("credit_account", function () {
+		return {
+			"filters": {
+				"company_name": frm.doc.company,
+				"parent_account": "Stock Assets - " + frm.doc.company
+			}
+		};
+	});
+}
+
 
 
 frappe.ui.form.on("Delivery Note Item", {
