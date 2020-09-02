@@ -53,9 +53,7 @@ def get_leaf_account_balance(company, root_type):
 
 
 def calculate_non_leaf_account_balance(account, parent_children_map, account_balances, parent_account= None):
-	print(account_balances)
 	if account in account_balances:
-		print(account)
 		account_balances[account]['indent'] = 1
 		return
 	else:
