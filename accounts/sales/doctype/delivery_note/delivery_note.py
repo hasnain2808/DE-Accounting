@@ -10,16 +10,16 @@ from frappe.model.mapper import get_mapped_doc
 
 class DeliveryNote(Document):
     def on_submit(self):
-        stock_account = frappe.get_list(
-            "Account",
-            filters={"company_name": self.company, "account_name": "Stock in Hand"},
-        )
-        print(stock_account)
-        expense = frappe.get_list(
-            "Account",
-            filters={"company_name": self.company, "account_name": "Stock Expense"},
-        )
-        print(expense)
+        # stock_account = frappe.get_list(
+        #     "Account",
+        #     filters={"company_name": self.company, "account_name": "Stock in Hand"},
+        # )
+        # print(stock_account)
+        # expense = frappe.get_list(
+        #     "Account",
+        #     filters={"company_name": self.company, "account_name": "Stock Expense"},
+        # )
+        # print(expense)
         # JEl1 = {
         #     "credit": self.total_amount,
         #     "debit": 0,
@@ -49,12 +49,12 @@ class DeliveryNote(Document):
                 "doctype": "GL Entry",
                 "posting_date": self.posting_date,
                 "transaction_date": self.posting_date,
-                "account": expense[0].name,
+                "account": self.debit_account,
                 "party_type": "Customer",
                 "party": self.customer,
                 "debit": self.total_amount,
                 "credit": 0,
-                "against": stock_account[0].name,
+                "against": self.credit_account,
                 "against_voucher": "Delivery Note",
                 "voucher_number": self.name,
                 "company": self.company,
@@ -67,12 +67,12 @@ class DeliveryNote(Document):
                 "doctype": "GL Entry",
                 "posting_date": self.posting_date,
                 "transaction_date": self.posting_date,
-                "account": stock_account[0].name,
+                "account": self.credit_account,
                 "party_type": "Customer",
                 "party": self.customer,
                 "debit": 0,
                 "credit": self.total_amount,
-                "against": expense[0].name,
+                "against": self.debit_account,
                 "against_voucher": "Delivery Note",
                 "voucher_number": self.name,
                 "company": self.company,
