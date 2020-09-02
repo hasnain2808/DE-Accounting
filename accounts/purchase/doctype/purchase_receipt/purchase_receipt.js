@@ -6,6 +6,7 @@ frappe.ui.form.on('Purchase Receipt', {
 
 	// },
 	refresh: function (frm) {
+		// set_default_accounts(frm);
 		frm.add_custom_button(__('Create Purchase Invoice'), function () {
 			frappe.model.open_mapped_doc({
 				method: "accounts.purchase.doctype.purchase_receipt.purchase_receipt.make_purchase_invoice",
@@ -13,14 +14,16 @@ frappe.ui.form.on('Purchase Receipt', {
 			})
 		})
 	},
-	company: function (frm) {
-		frm.set_value("debit_account", "Stock in Hand - " + frm.doc.company)
-		frm.set_value("credit_account", "Asset Received But not Billed - " + frm.doc.company)
-		frm.refresh_fields();
-		set_debit_account_filter(frm)
-		set_credit_account_filter(frm)
-	},
+	company: set_default_accounts,
 });
+
+function set_default_accounts(frm){
+	frm.set_value("debit_account", "Stock in Hand - " + frm.doc.company)
+	frm.set_value("credit_account", "Asset Received But not Billed - " + frm.doc.company)
+	frm.refresh_fields();
+	set_debit_account_filter(frm)
+	set_credit_account_filter(frm)
+}
 
 function set_debit_account_filter(frm) {
 	frm.set_query("debit_account", function () {
@@ -35,7 +38,7 @@ function set_debit_account_filter(frm) {
 }
 
 function set_credit_account_filter(frm) {
-	frm.set_query("debit_account", function () {
+	frm.set_query("credit_account", function () {
 		return {
 			"filters": {
 				"company_name": frm.doc.company,

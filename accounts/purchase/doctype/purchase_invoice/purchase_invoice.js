@@ -3,9 +3,21 @@
 
 frappe.ui.form.on('Purchase Invoice', {
 	refresh: add_payment_entry_button,
+	company: function (frm) {
+		frm.set_value("credit_account", "Creditors - " + frm.doc.company)
+		frm.set_value("debit_account", "Asset Received But not Billed - " + frm.doc.company)
+		frm.refresh_fields();
+		set_debit_account_filter(frm)
+		set_credit_account_filter(frm)
+	},
 });
 
 function add_payment_entry_button(frm) {
+	frm.set_value("credit_account", "Creditors - " + frm.doc.company)
+	frm.set_value("debit_account", "Asset Received But not Billed - " + frm.doc.company)
+	frm.refresh_fields();
+	set_debit_account_filter(frm)
+	set_credit_account_filter(frm)
 	frm.add_custom_button(__('Create Payment Entry'), function () {
 		let method = "accounts.purchase.doctype.purchase_invoice.purchase_invoice.get_payment_entry";
 		return frappe.call({
@@ -20,6 +32,29 @@ function add_payment_entry_button(frm) {
 			}
 		});
 	})
+}
+
+function set_debit_account_filter(frm) {
+	frm.set_query("debit_account", function () {
+		return {
+			"filters": {
+				"company_name": frm.doc.company,
+				"parent_account": "Stock Liabilities - " + frm.doc.company
+
+			}
+		};
+	});
+}
+
+function set_credit_account_filter(frm) {
+	frm.set_query("credit_account", function () {
+		return {
+			"filters": {
+				"company_name": frm.doc.company,
+				"parent_account": "Accounts Payable - " + frm.doc.company
+			}
+		};
+	});
 }
 
 frappe.ui.form.on("Purchase Invoice Item", {
@@ -42,10 +77,9 @@ frappe.ui.form.on("Purchase Invoice Item", {
 
 function update_total_amount(frm, cdt, cdn){
 	let cur_doc = locals[cdt][cdn];
-	// console.log(frm.doc.product_list)
+	console.log(frm.doc.product_list)
 	cur_doc.amount = cur_doc.qty * cur_doc.buying_price;
 	let sum = 0.0
-	if (! isNaN(frm.doc) ) {
 		frm.doc.product_list.forEach(element => {
 			console.log(element)
 			if (!( isNaN(element) && isNaN(element.amount))) {
@@ -53,7 +87,6 @@ function update_total_amount(frm, cdt, cdn){
 				console.log(sum)
 			}
 		});
-	}
 	frm.set_value("total_amount", sum)
 	frm.refresh_fields();
 }
