@@ -67,5 +67,5 @@ class PaymentEntry(Document):
         )
         gl_entry.insert()
 
-def set_missing_values(source, target):
-    target.run_method("set_missing_values")
+# def set_missing_values(source, target):
+#     target.run_method("set_missing_values")
