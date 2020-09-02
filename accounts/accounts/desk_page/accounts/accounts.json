@@ -18,7 +18,7 @@
  "idx": 0,
  "is_standard": 1,
  "label": "Accounts",
- "modified": "2020-08-25 19:33:37.217411",
+ "modified": "2020-09-02 11:07:57.198948",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Accounts",
@@ -28,7 +28,17 @@
  "shortcuts": [
   {
    "label": "General Ledger",
-   "link_to": "General Ledger",
+   "link_to": "General Immutable Ledger",
+   "type": "Report"
+  },
+  {
+   "label": "Balance Sheet",
+   "link_to": "Balance Sheet",
+   "type": "Report"
+  },
+  {
+   "label": "Profit and Loss",
+   "link_to": "Profit and Loss",
    "type": "Report"
   }
  ]
