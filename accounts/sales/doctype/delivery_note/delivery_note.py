@@ -127,16 +127,6 @@ class DeliveryNote(Document):
         )
         gl_entry.insert()
 
-def set_missing_values(source, target):
-    # if len(target.get("items")) == 0:
-    # 	frappe.throw(_("All items have already been Invoiced/Returned"))
-
-    doc = frappe.get_doc(target)
-    doc.ignore_pricing_rule = 1
-    doc.run_method("onload")
-    doc.run_method("set_missing_values")
-
-
 @frappe.whitelist()
 def make_sales_invoice(source_name, target_doc=None):
 
@@ -164,12 +154,6 @@ def make_sales_invoice(source_name, target_doc=None):
             # 	"add_if_empty": True
             # }
         },
-        target_doc,
-        set_missing_values,
+        target_doc
     )
     return doc
-
-
-def set_missing_values(source, target):
-    target.run_method("set_missing_values")
-    # target.run_method("calculate_taxes_and_totals")

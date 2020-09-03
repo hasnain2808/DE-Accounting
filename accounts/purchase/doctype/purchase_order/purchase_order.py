@@ -29,22 +29,9 @@ def make_purchase_receipt(source_name, target_doc=None):
                 "field_map": {
                     "name": "purchase_receipt_items",
                     "parent": "purchase_receipt",
-                    # "bom": "bom",
-                    # "material_request": "material_request",
-                    # "material_request_item": "material_request_item"
                 },
             },
-            # "Purchase Taxes and Charges": {
-            # 	"doctype": "Purchase Taxes and Charges",
-            # 	"add_if_empty": True
-            # }
         },
-        target_doc,
-        set_missing_values,
+        target_doc
     )
     return doc
-
-
-def set_missing_values(source, target):
-    target.run_method("set_missing_values")
-    # target.run_method("calculate_taxes_and_totals")

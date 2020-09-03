@@ -44,13 +44,8 @@ def make_delivery_note(source_name, target_doc=None):
             # 	"add_if_empty": True
             # }
         },
-        target_doc,
-        set_missing_values,
+        target_doc
     )
 
     return doc
 
-
-def set_missing_values(source, target):
-    target.run_method("set_missing_values")
-    # target.run_method("calculate_taxes_and_totals")

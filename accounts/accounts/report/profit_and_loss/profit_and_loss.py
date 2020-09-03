@@ -60,7 +60,7 @@ def get_chart_data( income, expense, profit):
 
 	chart = {
 		"data": {
-			'labels': ["Net Profit/Loss"],
+			'labels': ["2020-21"],
 			'datasets': datasets
 		}
 	}

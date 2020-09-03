@@ -125,12 +125,6 @@ class SalesInvoice(Document):
         )
         gl_entry.insert()
 
-def set_missing_values(source, target):
-    doc = frappe.get_doc(target)
-    doc.ignore_pricing_rule = 1
-    doc.run_method("onload")
-    doc.run_method("set_missing_values")
-
 
 @frappe.whitelist()
 def get_payment_entry(dt, dn, party_amount=None, bank_account=None, bank_amount=None):
