@@ -11,42 +11,6 @@ from frappe.utils import nowdate, now
 
 class PurchaseReceipt(Document):
     def on_submit(self):
-        # stock_account = frappe.get_list(
-        #     "Account",
-        #     filters={"company_name": self.company, "account_name": "Stock in Hand"},
-        # )
-        # print(stock_account)
-        # rec_not_billed = frappe.get_list(
-        #     "Account",
-        #     filters={
-        #         "company_name": self.company,
-        #         "account_name": "Asset Received But not Billed",
-        #     },
-        # )
-        # print(rec_not_billed)
-
-        # JEl1 = {
-        #     "credit": 0,
-        #     "debit": self.total_amount,
-        #     "account": stock_account[0].name,
-        # }
-        # JEl2 = {
-        #     "debit": 0,
-        #     "credit": self.total_amount,
-        #     "account": rec_not_billed[0].name,
-        #     "party_type": "Supplier",
-        #     "party_name": self.supplier,
-        # }
-        # JE = frappe.get_doc(
-        #     {
-        #         "doctype": "Journal Entry",
-        #         "company": self.company,
-        #         "entry_date": self.posting_date,
-        #         "entry_lines": [JEl1, JEl2],
-        #     }
-        # )
-        # JE.insert()
-
         gl_entry = frappe.get_doc(
             {
                 "doctype": "GL Entry",
@@ -130,12 +94,6 @@ class PurchaseReceipt(Document):
         )
         gl_entry.insert()
 
-
-
-def set_missing_values(source, target):
-    target.run_method("set_missing_values")
-
-
 @frappe.whitelist()
 def make_purchase_invoice(source_name, target_doc=None):
     doc = get_mapped_doc(
@@ -155,8 +113,7 @@ def make_purchase_invoice(source_name, target_doc=None):
                 },
             },
         },
-        target_doc,
-        set_missing_values,
+        target_doc
     )
     return doc
 

@@ -33,7 +33,6 @@ function update_total_amount(frm, cdt, cdn){
 	// console.log(frm.doc.product_list)
 	cur_doc.amount = cur_doc.qty * cur_doc.buying_price;
 	let sum = 0.0
-	if (! isNaN(frm.doc) ) {
 		frm.doc.product_list.forEach(element => {
 			console.log(element)
 			if (!( isNaN(element) && isNaN(element.amount))) {
@@ -41,7 +40,6 @@ function update_total_amount(frm, cdt, cdn){
 				console.log(sum)
 			}
 		});
-	}
 	frm.set_value("total_amount", sum)
 	frm.refresh_fields();
 }
