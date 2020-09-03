@@ -8,6 +8,7 @@ from frappe.model.document import Document
 from frappe.model.mapper import get_mapped_doc
 from frappe.utils import nowdate
 from frappe import _, scrub
+from frappe.utils import nowdate, now
 
 
 class SalesInvoice(Document):
@@ -78,6 +79,51 @@ class SalesInvoice(Document):
         )
         gl_entry.insert()
 
+
+    def on_cancel(self):
+        frappe.db.sql("""update `tabGL Entry` set `is_cancelled` = 1,
+            modified=%s, modified_by=%s
+            where against_voucher=%s and voucher_number=%s and is_cancelled = 0""",
+            (now(), frappe.session.user, "Sales Invoice", self.name))
+
+        gl_entry = frappe.get_doc(
+            {
+                "doctype": "GL Entry",
+                "posting_date": self.posting_date,
+                "transaction_date": self.posting_date,
+                "account": self.credit_account,
+                "party_type": "Customer",
+                "party": self.customer,
+                "debit": self.total_amount,
+                "credit": 0,
+                "against": self.debit_account,
+                "against_voucher": "Sales Invoice",
+                "voucher_number": self.name,
+                "company": self.company,
+                "fiscal_year": "2020-2021",
+                "is_cancelled" : 1
+            }
+        )
+        gl_entry.insert()
+        gl_entry = frappe.get_doc(
+            {
+                "doctype": "GL Entry",
+                "posting_date": self.posting_date,
+                "transaction_date": self.posting_date,
+                "account": self.debit_account,
+                "party_type": "Customer",
+                "party": self.customer,
+                "debit": 0,
+                "credit": self.total_amount,
+                "against": self.credit_account,
+                "against_voucher": "Sales Invoice",
+                "voucher_number": self.name,
+                "company": self.company,
+                "fiscal_year": "2020-2021",
+                "is_cancelled" : 1
+            }
+        )
+        gl_entry.insert()
 
 def set_missing_values(source, target):
     doc = frappe.get_doc(target)
