@@ -18,7 +18,9 @@
   "voucher_number",
   "company",
   "fiscal_year",
-  "amended_from"
+  "amended_from",
+  "is_cancelled",
+  "comment"
  ],
  "fields": [
   {
@@ -97,11 +99,21 @@
    "options": "GL Entry",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_cancelled",
+   "fieldtype": "Check",
+   "label": "Is Cancelled"
+  },
+  {
+   "fieldname": "comment",
+   "fieldtype": "Data",
+   "label": "Comment"
   }
  ],
- "is_submittable": 1,
  "links": [],
- "modified": "2020-08-25 11:32:24.603385",
+ "modified": "2020-09-03 12:28:12.074911",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "GL Entry",
