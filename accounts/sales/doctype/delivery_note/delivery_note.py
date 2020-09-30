@@ -144,15 +144,8 @@ def make_sales_invoice(source_name, target_doc=None):
                 "field_map": {
                     "name": "sales_invoice_item",
                     "parent": "sales_invoice",
-                    # "bom": "bom",
-                    # "material_request": "material_request",
-                    # "material_request_item": "material_request_item"
                 },
             },
-            # "Purchase Taxes and Charges": {
-            # 	"doctype": "Purchase Taxes and Charges",
-            # 	"add_if_empty": True
-            # }
         },
         target_doc
     )
